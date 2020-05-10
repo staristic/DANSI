@@ -1,0 +1,10 @@
+# modules
+node_modules
+
+# compiled and packed file
+addon/build
+dist
+pack
+
+# symbol system record
+symbols_config

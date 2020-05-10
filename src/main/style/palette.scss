@@ -1,0 +1,11 @@
+.palette {
+  margin-bottom: 20px;
+
+  p {
+    margin: 10px 0 20px 0;
+  }
+
+  div {
+    @import '../../assets/style/symbol-button.scss';
+  }
+}

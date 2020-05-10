@@ -1,0 +1,88 @@
+@import '../../assets/style/layer.scss';
+
+#image-displayer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: $popup-layer;
+  border: 3px solid #004d99;
+
+  &.hidden {
+    display: none;
+  }
+
+  div {
+    width: 100%;
+
+    &.operation {
+      height: $operation-height;
+      text-align: center;
+      border-bottom: 1px solid #069;
+      background: #cef;
+
+      button {
+        margin: 5px 10px;
+        width: 20px;
+        height: 20px;
+        border: 0;
+        padding: 0;
+
+        img {
+          margin: 0;
+          border: 0;
+          width: 20px;
+          height: 20px;
+        }
+
+        &.close {
+          background: red;
+          border-radius: 10px;
+        }
+
+        &.save {
+          background: green;
+        }
+
+        &.zoom {
+          background: #c6f;
+          border-radius: 50%;
+        }
+      }
+    }
+
+    &.shell {
+      height: calc(100vh - #{$operation-height});
+      background: black;
+      opacity: 0.7;
+    }
+
+    &.canvas {
+      width: auto;
+      max-width: calc(100vw - #{$scrollbar-width});
+      max-height: calc(100vh - 80px);
+      overflow: auto;
+      background-color: white;
+      box-shadow: #004d99;
+      padding: 10px;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      canvas {
+        &.zoom {
+          max-width: calc(100vw - #{$scrollbar-width});
+          max-height: calc(100vh - 90px);
+        }
+      }
+    }
+
+    a {
+      &#for-save {
+        display: none;
+      }
+    }
+  }
+}

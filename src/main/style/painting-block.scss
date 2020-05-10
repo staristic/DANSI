@@ -1,0 +1,9 @@
+#painting-block {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+
+  @import './file-button-bar.scss';
+  @import './file-tag-bar.scss';
+  @import './canvas-block.scss';
+}

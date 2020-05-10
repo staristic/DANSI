@@ -1,0 +1,28 @@
+button {
+  @import './color.scss';
+
+  margin: 0;
+  height: 20px;
+  width: 20px;
+  border: 1px solid orange;
+  position: relative;
+  padding: 0;
+  font-size: 18px;
+  font-family: PMingLiU, sans-serif;
+  line-height: 18px;
+
+  &.focus {
+    &::after {
+      display: block;
+      content: "*";
+      height: 10px;
+      width: 10px;
+      color: orange;
+      background: orange;
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      border-radius: 5px;
+    }
+  }
+}

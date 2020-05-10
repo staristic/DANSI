@@ -1,0 +1,13 @@
+@import '../../assets/style/layer.scss';
+
+.background-image-area {
+  z-index: $backgourndimage-layer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+
+  img {
+    position: absolute;
+  }
+}

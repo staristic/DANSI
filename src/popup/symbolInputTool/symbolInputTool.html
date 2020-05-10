@@ -1,0 +1,706 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>特殊符號輸入工具</title>
+<link rel="stylesheet" href="./symbolInputTool.css"></link>
+</head>
+<body>
+<div id="class-tag">
+  <button class="toggle focus" data-type="toggle" data-name="special" >特殊符號</button>
+  <button class="toggle" data-type="toggle" data-name="brackets">括號</button>
+  <button class="toggle" data-type="toggle" data-name="punctuation">標點符號</button>
+  <button class="toggle" data-type="toggle" data-name="fill">填色方塊</button>
+  <button class="toggle" data-type="toggle" data-name="greek">希臘字母</button>
+  <button class="toggle" data-type="toggle" data-name="alphabet">英數全形</button>
+  <button class="toggle" data-type="toggle" data-name="spell">注音</button>
+  <button class="toggle" data-type="toggle" data-name="form">表格</button>
+  <button class="toggle" data-type="toggle" data-name="japan">日文符號</button>
+  <button class="toggle" data-type="toggle" data-name="history">歷史記錄</button>
+  <button class="toggle" data-type="toggle" data-name="private">自訂</button>
+</div>
+<div id="tool-area">
+  <button class="tooltip plus" data-type="plus">
+    <img src="../../assets/icons/plus-solid-white.svg" data-type="plus" />
+    <span class="tooltiptext">可將所選取的符號加入自訂</span>
+  </button>
+  <button class="tooltip remove hidden" data-type="remove">
+    <img src="../../assets/icons/minus-solid.svg" data-type="remove" />
+    <span class="tooltiptext">移除自訂符號</span>
+  </button>
+  <span id="notice"></span>
+</div>
+<div id="symbol-area">
+  <div class="symbol toggle focus" data-name="special">
+    <div>
+      <button data-type="symbol" data-symbol="○">○</button>
+      <button data-type="symbol" data-symbol="●">●</button>
+      <button data-type="symbol" data-symbol="△">△</button>
+      <button data-type="symbol" data-symbol="▲">▲</button>
+      <button data-type="symbol" data-symbol="▽">▽</button>
+      <button data-type="symbol" data-symbol="▼">▼</button>
+      <button data-type="symbol" data-symbol="☆">☆</button>
+      <button data-type="symbol" data-symbol="★">★</button>
+      <button data-type="symbol" data-symbol="◇">◇</button>
+      <button data-type="symbol" data-symbol="◆">◆</button>
+      <button data-type="symbol" data-symbol="□">□</button>
+      <button data-type="symbol" data-symbol="■">■</button>
+    </div>
+    <div>
+      <button data-type="symbol" data-symbol="↑">↑</button>
+      <button data-type="symbol" data-symbol="↓">↓</button>
+      <button data-type="symbol" data-symbol="←">←</button>
+      <button data-type="symbol" data-symbol="→">→</button>
+      <button data-type="symbol" data-symbol="↖">↖</button>
+      <button data-type="symbol" data-symbol="↗">↗</button>
+      <button data-type="symbol" data-symbol="↙">↙</button>
+      <button data-type="symbol" data-symbol="↘">↘</button>
+      <button data-type="symbol" data-symbol="∕">∕</button>
+      <button data-type="symbol" data-symbol="﹨">﹨</button>
+      <button data-type="symbol" data-symbol="╱">╱</button>
+      <button data-type="symbol" data-symbol="╲">╲</button>
+      <button data-type="symbol" data-symbol="／">／</button>
+      <button data-type="symbol" data-symbol="＼">＼</button>
+      <button data-type="symbol" data-symbol="╳">╳</button>
+    </div>
+    <div>
+      <button data-type="symbol" data-symbol="﹣">﹣</button>
+      <button data-type="symbol" data-symbol="﹦">﹦</button>
+      <button data-type="symbol" data-symbol="≡">≡</button>
+      <button data-type="symbol" data-symbol="—">—</button>
+      <button data-type="symbol" data-symbol="｜">｜</button>
+      <button data-type="symbol" data-symbol="∣">∣</button>
+      <button data-type="symbol" data-symbol="∥">∥</button>
+      <button data-type="symbol" data-symbol="–">–</button>
+      <button data-type="symbol" data-symbol="︱">︱</button>
+      <button data-type="symbol" data-symbol="︳">︳</button>
+    </div>
+    <div>
+      <button data-type="symbol" data-symbol="◎">◎</button>
+      <button data-type="symbol" data-symbol="㊣">㊣</button>
+      <button data-type="symbol" data-symbol="⊕">⊕</button>
+      <button data-type="symbol" data-symbol="⊙">⊙</button>
+      <button data-type="symbol" data-symbol="℅">℅</button>
+      <button data-type="symbol" data-symbol="§">§</button>
+      <button data-type="symbol" data-symbol="￥">￥</button>
+      <button data-type="symbol" data-symbol="〒">〒</button>
+      <button data-type="symbol" data-symbol="￠">￠</button>
+      <button data-type="symbol" data-symbol="￡">￡</button>
+      <button data-type="symbol" data-symbol="♀">♀</button>
+      <button data-type="symbol" data-symbol="♂">♂</button>
+      <button data-type="symbol" data-symbol="※">※</button>
+    </div>
+  </div>
+  <div class="symbol toggle" data-name="brackets">
+    <div>
+      <button data-type="symbol" data-symbol="〔">〔</button>
+      <button data-type="symbol" data-symbol="〕">〕</button>
+      <button data-type="symbol" data-symbol="【">【</button>
+      <button data-type="symbol" data-symbol="】">】</button>
+      <button data-type="symbol" data-symbol="《">《</button>
+      <button data-type="symbol" data-symbol="》">》</button>
+      <button data-type="symbol" data-symbol="（">（</button>
+      <button data-type="symbol" data-symbol="）">）</button>
+      <button data-type="symbol" data-symbol="｛">｛</button>
+      <button data-type="symbol" data-symbol="｝">｝</button>
+      <button data-type="symbol" data-symbol="﹙">﹙</button>
+      <button data-type="symbol" data-symbol="﹚">﹚</button>
+      <button data-type="symbol" data-symbol="『">『</button>
+      <button data-type="symbol" data-symbol="』">』</button>
+      <button data-type="symbol" data-symbol="﹛">﹛</button>
+      <button data-type="symbol" data-symbol="﹜">﹜</button>
+      <button data-type="symbol" data-symbol="﹝">﹝</button>
+      <button data-type="symbol" data-symbol="﹞">﹞</button>
+      <button data-type="symbol" data-symbol="＜">＜</button>
+      <button data-type="symbol" data-symbol="＞">＞</button>
+    </div>
+    <div>
+      <button data-type="symbol" data-symbol="≦">≦</button>
+      <button data-type="symbol" data-symbol="≧">≧</button>
+      <button data-type="symbol" data-symbol="﹤">﹤</button>
+      <button data-type="symbol" data-symbol="﹥">﹥</button>
+      <button data-type="symbol" data-symbol="「">「</button>
+      <button data-type="symbol" data-symbol="」">」</button>
+      <button data-type="symbol" data-symbol="‘">‘</button>
+      <button data-type="symbol" data-symbol="’">’</button>
+      <button data-type="symbol" data-symbol="“">“</button>
+      <button data-type="symbol" data-symbol="”">”</button>
+
+      <button data-type="symbol" data-symbol="〝">〝</button>
+      <button data-type="symbol" data-symbol="〞">〞</button>
+      <button data-type="symbol" data-symbol="‵">‵</button>
+      <button data-type="symbol" data-symbol="′">′</button>
+      <button data-type="symbol" data-symbol="︵">︵</button>
+      <button data-type="symbol" data-symbol="︶">︶</button>
+      <button data-type="symbol" data-symbol="︷">︷</button>
+      <button data-type="symbol" data-symbol="︸">︸</button>
+      <button data-type="symbol" data-symbol="︹">︹</button>
+      <button data-type="symbol" data-symbol="︺">︺</button>
+    </div>
+    <div>
+      <button data-type="symbol" data-symbol="︻">︻</button>
+      <button data-type="symbol" data-symbol="︼">︼</button>
+      <button data-type="symbol" data-symbol="︽">︽</button>
+      <button data-type="symbol" data-symbol="︾">︾</button>
+      <button data-type="symbol" data-symbol="〈">〈</button>
+      <button data-type="symbol" data-symbol="〉">〉</button>
+      <button data-type="symbol" data-symbol="︿">︿</button>
+      <button data-type="symbol" data-symbol="﹀">﹀</button>
+      <button data-type="symbol" data-symbol="﹁">﹁</button>
+      <button data-type="symbol" data-symbol="﹂">﹂</button>
+      <button data-type="symbol" data-symbol="﹃">﹃</button>
+      <button data-type="symbol" data-symbol="﹄">﹄</button>
+    </div>
+  </div>
+  <div class="symbol toggle" data-name="punctuation">
+    <div>
+      <button data-type="symbol" data-symbol="，">，</button>
+      <button data-type="symbol" data-symbol="﹐">﹐</button>
+      <button data-type="symbol" data-symbol="、">、</button>
+      <button data-type="symbol" data-symbol="﹑">﹑</button>
+      <button data-type="symbol" data-symbol="。">。</button>
+      <button data-type="symbol" data-symbol="﹒">﹒</button>
+      <button data-type="symbol" data-symbol="？">？</button>
+      <button data-type="symbol" data-symbol="﹖">﹖</button>
+      <button data-type="symbol" data-symbol="！">！</button>
+      <button data-type="symbol" data-symbol="﹗">﹗</button>
+      <button data-type="symbol" data-symbol="；">；</button>
+      <button data-type="symbol" data-symbol="﹔">﹔</button>
+      <button data-type="symbol" data-symbol="︰">︰</button>
+      <button data-type="symbol" data-symbol="﹕">﹕</button>
+      <button data-type="symbol" data-symbol="～">～</button>
+      <button data-type="symbol" data-symbol="〃">〃</button>
+      <button data-type="symbol" data-symbol="§">§</button>
+      <button data-type="symbol" data-symbol="︴">︴</button>
+      <button data-type="symbol" data-symbol="﹏">﹏</button>
+      <button data-type="symbol" data-symbol="╴">╴</button>
+      <button data-type="symbol" data-symbol="︳">︳</button>
+      <button data-type="symbol" data-symbol="—">—</button>
+    </div>
+    <div>
+      <button data-type="symbol" data-symbol="︱">︱</button>
+      <button data-type="symbol" data-symbol="–">–</button>
+      <button data-type="symbol" data-symbol="｜">｜</button>
+      <button data-type="symbol" data-symbol="﹎">﹎</button>
+      <button data-type="symbol" data-symbol="﹊">﹊</button>
+      <button data-type="symbol" data-symbol="﹍">﹍</button>
+      <button data-type="symbol" data-symbol="…">…</button>
+      <button data-type="symbol" data-symbol="‥">‥</button>
+      <button data-type="symbol" data-symbol="．">．</button>
+      <button data-type="symbol" data-symbol="˙">˙</button>
+      <button data-type="symbol" data-symbol="＄">＄</button>
+      <button data-type="symbol" data-symbol="﹩">﹩</button>
+      <button data-type="symbol" data-symbol="％">％</button>
+      <button data-type="symbol" data-symbol="﹪">﹪</button>
+      <button data-type="symbol" data-symbol="＠">＠</button>
+      <button data-type="symbol" data-symbol="﹫">﹫</button>
+      <button data-type="symbol" data-symbol="＆">＆</button>
+      <button data-type="symbol" data-symbol="﹠">﹠</button>
+      <button data-type="symbol" data-symbol="＃">＃</button>
+      <button data-type="symbol" data-symbol="﹟">﹟</button>
+      <button data-type="symbol" data-symbol="＊">＊</button>
+      <button data-type="symbol" data-symbol="﹡">﹡</button>
+      <button data-type="symbol" data-symbol="‧">‧</button>
+    </div>
+  </div>
+  <div class="symbol toggle" data-name="fill">
+    <div>
+      <button data-type="symbol" data-symbol="▁">▁</button>
+      <button data-type="symbol" data-symbol="▂">▂</button>
+      <button data-type="symbol" data-symbol="▃">▃</button>
+      <button data-type="symbol" data-symbol="▄">▄</button>
+      <button data-type="symbol" data-symbol="▅">▅</button>
+      <button data-type="symbol" data-symbol="▆">▆</button>
+      <button data-type="symbol" data-symbol="▇">▇</button>
+      <button data-type="symbol" data-symbol="█">█</button>
+    </div>
+    <div>
+      <button data-type="symbol" data-symbol="▏">▏</button>
+      <button data-type="symbol" data-symbol="▎">▎</button>
+      <button data-type="symbol" data-symbol="▍">▍</button>
+      <button data-type="symbol" data-symbol="▌">▌</button>
+      <button data-type="symbol" data-symbol="▋">▋</button>
+      <button data-type="symbol" data-symbol="▊">▊</button>
+      <button data-type="symbol" data-symbol="▉">▉</button>
+    </div>
+    <div>
+      <button data-type="symbol" data-symbol="◤">◤</button>
+      <button data-type="symbol" data-symbol="◣">◣</button>
+      <button data-type="symbol" data-symbol="◥">◥</button>
+      <button data-type="symbol" data-symbol="◢">◢</button>
+    </div>
+  </div>
+  <div class="symbol toggle" data-name="greek">
+    <div>
+      <button data-type="symbol" data-symbol="Α">Α</button>
+      <button data-type="symbol" data-symbol="Β">Β</button>
+      <button data-type="symbol" data-symbol="Γ">Γ</button>
+      <button data-type="symbol" data-symbol="Δ">Δ</button>
+      <button data-type="symbol" data-symbol="Ε">Ε</button>
+      <button data-type="symbol" data-symbol="Ζ">Ζ</button>
+      <button data-type="symbol" data-symbol="Η">Η</button>
+      <button data-type="symbol" data-symbol="Θ">Θ</button>
+      <button data-type="symbol" data-symbol="Ι">Ι</button>
+      <button data-type="symbol" data-symbol="Κ">Κ</button>
+      <button data-type="symbol" data-symbol="Λ">Λ</button>
+      <button data-type="symbol" data-symbol="Μ">Μ</button>
+      <button data-type="symbol" data-symbol="Ν">Ν</button>
+      <button data-type="symbol" data-symbol="Ξ">Ξ</button>
+      <button data-type="symbol" data-symbol="Ο">Ο</button>
+      <button data-type="symbol" data-symbol="Π">Π</button>
+      <button data-type="symbol" data-symbol="Ρ">Ρ</button>
+      <button data-type="symbol" data-symbol="Σ">Σ</button>
+      <button data-type="symbol" data-symbol="Τ">Τ</button>
+      <button data-type="symbol" data-symbol="Υ">Υ</button>
+      <button data-type="symbol" data-symbol="Φ">Φ</button>
+      <button data-type="symbol" data-symbol="Χ">Χ</button>
+      <button data-type="symbol" data-symbol="Ψ">Ψ</button>
+      <button data-type="symbol" data-symbol="Ω">Ω</button>
+    </div>
+    <div>
+      <button data-type="symbol" data-symbol="α">α</button>
+      <button data-type="symbol" data-symbol="β">β</button>
+      <button data-type="symbol" data-symbol="γ">γ</button>
+      <button data-type="symbol" data-symbol="δ">δ</button>
+      <button data-type="symbol" data-symbol="ε">ε</button>
+      <button data-type="symbol" data-symbol="ζ">ζ</button>
+      <button data-type="symbol" data-symbol="η">η</button>
+      <button data-type="symbol" data-symbol="θ">θ</button>
+      <button data-type="symbol" data-symbol="ι">ι</button>
+      <button data-type="symbol" data-symbol="κ">κ</button>
+      <button data-type="symbol" data-symbol="λ">λ</button>
+      <button data-type="symbol" data-symbol="μ">μ</button>
+      <button data-type="symbol" data-symbol="ν">ν</button>
+      <button data-type="symbol" data-symbol="ξ">ξ</button>
+      <button data-type="symbol" data-symbol="ο">ο</button>
+      <button data-type="symbol" data-symbol="π">π</button>
+      <button data-type="symbol" data-symbol="ρ">ρ</button>
+      <button data-type="symbol" data-symbol="σ">σ</button>
+      <button data-type="symbol" data-symbol="τ">τ</button>
+      <button data-type="symbol" data-symbol="υ">υ</button>
+      <button data-type="symbol" data-symbol="φ">φ</button>
+      <button data-type="symbol" data-symbol="χ">χ</button>
+      <button data-type="symbol" data-symbol="ψ">ψ</button>
+      <button data-type="symbol" data-symbol="ω">ω</button>
+    </div>
+  </div>
+  <div class="symbol toggle" data-name="alphabet">
+    <div>
+      <button data-type="symbol" data-symbol="Ａ">Ａ</button>
+      <button data-type="symbol" data-symbol="Ｂ">Ｂ</button>
+      <button data-type="symbol" data-symbol="Ｃ">Ｃ</button>
+      <button data-type="symbol" data-symbol="Ｄ">Ｄ</button>
+      <button data-type="symbol" data-symbol="Ｅ">Ｅ</button>
+      <button data-type="symbol" data-symbol="Ｆ">Ｆ</button>
+      <button data-type="symbol" data-symbol="Ｇ">Ｇ</button>
+      <button data-type="symbol" data-symbol="Ｈ">Ｈ</button>
+      <button data-type="symbol" data-symbol="Ｉ">Ｉ</button>
+      <button data-type="symbol" data-symbol="Ｊ">Ｊ</button>
+      <button data-type="symbol" data-symbol="Ｋ">Ｋ</button>
+      <button data-type="symbol" data-symbol="Ｌ">Ｌ</button>
+      <button data-type="symbol" data-symbol="Ｍ">Ｍ</button>
+      <button data-type="symbol" data-symbol="Ｎ">Ｎ</button>
+      <button data-type="symbol" data-symbol="Ｏ">Ｏ</button>
+      <button data-type="symbol" data-symbol="Ｐ">Ｐ</button>
+      <button data-type="symbol" data-symbol="Ｑ">Ｑ</button>
+      <button data-type="symbol" data-symbol="Ｒ">Ｒ</button>
+      <button data-type="symbol" data-symbol="Ｓ">Ｓ</button>
+      <button data-type="symbol" data-symbol="Ｔ">Ｔ</button>
+      <button data-type="symbol" data-symbol="Ｕ">Ｕ</button>
+      <button data-type="symbol" data-symbol="Ｖ">Ｖ</button>
+      <button data-type="symbol" data-symbol="Ｗ">Ｗ</button>
+      <button data-type="symbol" data-symbol="Ｘ">Ｘ</button>
+      <button data-type="symbol" data-symbol="Ｙ">Ｙ</button>
+      <button data-type="symbol" data-symbol="Ｚ">Ｚ</button>
+    </div>
+    <div>
+      <button data-type="symbol" data-symbol="ａ">ａ</button>
+      <button data-type="symbol" data-symbol="ｂ">ｂ</button>
+      <button data-type="symbol" data-symbol="ｃ">ｃ</button>
+      <button data-type="symbol" data-symbol="ｄ">ｄ</button>
+      <button data-type="symbol" data-symbol="ｅ">ｅ</button>
+      <button data-type="symbol" data-symbol="ｆ">ｆ</button>
+      <button data-type="symbol" data-symbol="ｇ">ｇ</button>
+      <button data-type="symbol" data-symbol="ｈ">ｈ</button>
+      <button data-type="symbol" data-symbol="ｉ">ｉ</button>
+      <button data-type="symbol" data-symbol="ｊ">ｊ</button>
+      <button data-type="symbol" data-symbol="ｋ">ｋ</button>
+      <button data-type="symbol" data-symbol="ｌ">ｌ</button>
+      <button data-type="symbol" data-symbol="ｍ">ｍ</button>
+      <button data-type="symbol" data-symbol="ｎ">ｎ</button>
+      <button data-type="symbol" data-symbol="ｏ">ｏ</button>
+      <button data-type="symbol" data-symbol="ｐ">ｐ</button>
+      <button data-type="symbol" data-symbol="ｑ">ｑ</button>
+      <button data-type="symbol" data-symbol="ｒ">ｒ</button>
+      <button data-type="symbol" data-symbol="ｓ">ｓ</button>
+      <button data-type="symbol" data-symbol="ｔ">ｔ</button>
+      <button data-type="symbol" data-symbol="ｕ">ｕ</button>
+      <button data-type="symbol" data-symbol="ｖ">ｖ</button>
+      <button data-type="symbol" data-symbol="ｗ">ｗ</button>
+      <button data-type="symbol" data-symbol="ｘ">ｘ</button>
+      <button data-type="symbol" data-symbol="ｙ">ｙ</button>
+      <button data-type="symbol" data-symbol="ｚ">ｚ</button>
+    </div>
+    <div>
+      <button data-type="symbol" data-symbol="１">１</button>
+      <button data-type="symbol" data-symbol="２">２</button>
+      <button data-type="symbol" data-symbol="３">３</button>
+      <button data-type="symbol" data-symbol="４">４</button>
+      <button data-type="symbol" data-symbol="５">５</button>
+      <button data-type="symbol" data-symbol="６">６</button>
+      <button data-type="symbol" data-symbol="７">７</button>
+      <button data-type="symbol" data-symbol="８">８</button>
+      <button data-type="symbol" data-symbol="９">９</button>
+      <button data-type="symbol" data-symbol="０">０</button>
+      <button data-type="symbol" data-symbol="Ⅰ">Ⅰ</button>
+      <button data-type="symbol" data-symbol="Ⅱ">Ⅱ</button>
+      <button data-type="symbol" data-symbol="Ⅲ">Ⅲ</button>
+      <button data-type="symbol" data-symbol="Ⅳ">Ⅳ</button>
+      <button data-type="symbol" data-symbol="Ⅴ">Ⅴ</button>
+      <button data-type="symbol" data-symbol="Ⅵ">Ⅵ</button>
+      <button data-type="symbol" data-symbol="Ⅵ">Ⅵ</button>
+      <button data-type="symbol" data-symbol="Ⅶ">Ⅶ</button>
+      <button data-type="symbol" data-symbol="Ⅷ">Ⅷ</button>
+      <button data-type="symbol" data-symbol="Ⅸ">Ⅸ</button>
+      <button data-type="symbol" data-symbol="Ⅹ">Ⅹ</button>
+    </div>
+  </div>
+  <div class="symbol toggle" data-name="spell">
+    <div>
+      <button data-type="symbol" data-symbol="ㄅ">ㄅ</button>
+      <button data-type="symbol" data-symbol="ㄆ">ㄆ</button>
+      <button data-type="symbol" data-symbol="ㄇ">ㄇ</button>
+      <button data-type="symbol" data-symbol="ㄈ">ㄈ</button>
+      <button data-type="symbol" data-symbol="ㄉ">ㄉ</button>
+      <button data-type="symbol" data-symbol="ㄊ">ㄊ</button>
+      <button data-type="symbol" data-symbol="ㄋ">ㄋ</button>
+      <button data-type="symbol" data-symbol="ㄌ">ㄌ</button>
+      <button data-type="symbol" data-symbol="ㄍ">ㄍ</button>
+      <button data-type="symbol" data-symbol="ㄎ">ㄎ</button>
+      <button data-type="symbol" data-symbol="ㄏ">ㄏ</button>
+      <button data-type="symbol" data-symbol="ㄐ">ㄐ</button>
+      <button data-type="symbol" data-symbol="ㄑ">ㄑ</button>
+      <button data-type="symbol" data-symbol="ㄒ">ㄒ</button>
+      <button data-type="symbol" data-symbol="ㄓ">ㄓ</button>
+      <button data-type="symbol" data-symbol="ㄔ">ㄔ</button>
+      <button data-type="symbol" data-symbol="ㄕ">ㄕ</button>
+      <button data-type="symbol" data-symbol="ㄖ">ㄖ</button>
+      <button data-type="symbol" data-symbol="ㄗ">ㄗ</button>
+      <button data-type="symbol" data-symbol="ㄘ">ㄘ</button>
+      <button data-type="symbol" data-symbol="ㄙ">ㄙ</button>
+    </div>
+    <div>
+      <button data-type="symbol" data-symbol="ㄧ">ㄧ</button>
+      <button data-type="symbol" data-symbol="ㄨ">ㄨ</button>
+      <button data-type="symbol" data-symbol="ㄩ">ㄩ</button>
+      <button data-type="symbol" data-symbol="ㄚ">ㄚ</button>
+      <button data-type="symbol" data-symbol="ㄛ">ㄛ</button>
+      <button data-type="symbol" data-symbol="ㄜ">ㄜ</button>
+      <button data-type="symbol" data-symbol="ㄝ">ㄝ</button>
+      <button data-type="symbol" data-symbol="ㄞ">ㄞ</button>
+      <button data-type="symbol" data-symbol="ㄟ">ㄟ</button>
+      <button data-type="symbol" data-symbol="ㄠ">ㄠ</button>
+      <button data-type="symbol" data-symbol="ㄡ">ㄡ</button>
+      <button data-type="symbol" data-symbol="ㄢ">ㄢ</button>
+      <button data-type="symbol" data-symbol="ㄣ">ㄣ</button>
+      <button data-type="symbol" data-symbol="ㄤ">ㄤ</button>
+      <button data-type="symbol" data-symbol="ㄥ">ㄥ</button>
+      <button data-type="symbol" data-symbol="ㄦ">ㄦ</button>
+    </div>
+    <div>
+      <button data-type="symbol" data-symbol="˙">˙</button>
+      <button data-type="symbol" data-symbol="ˊ">ˊ</button>
+      <button data-type="symbol" data-symbol="ˇ">ˇ</button>
+    </div>
+  </div>
+  <div class="symbol toggle" data-name="form">
+    <div>
+      <button data-type="symbol" data-symbol="┌">┌</button>
+      <button data-type="symbol" data-symbol="┬">┬</button>
+      <button data-type="symbol" data-symbol="┐">┐</button>
+    </div>
+    <div>
+      <button data-type="symbol" data-symbol="├">├</button>
+      <button data-type="symbol" data-symbol="┼">┼</button>
+      <button data-type="symbol" data-symbol="┤">┤</button>
+      <button data-type="symbol" data-symbol="─">─</button>
+      <button data-type="symbol" data-symbol="│">│</button>
+    </div>
+    <div>
+      <button data-type="symbol" data-symbol="└">└</button>
+      <button data-type="symbol" data-symbol="┴">┴</button>
+      <button data-type="symbol" data-symbol="┘">┘</button>
+    </div>
+    <div>
+      <button data-type="symbol" data-symbol="╓">╓</button>
+      <button data-type="symbol" data-symbol="╥">╥</button>
+      <button data-type="symbol" data-symbol="╖">╖</button>
+    </div>
+    <div>
+      <button data-type="symbol" data-symbol="╟">╟</button>
+      <button data-type="symbol" data-symbol="╫">╫</button>
+      <button data-type="symbol" data-symbol="╢">╢</button>
+      <button data-type="symbol" data-symbol="─">─</button>
+      <button data-type="symbol" data-symbol="║">║</button>
+    </div>
+    <div>
+      <button data-type="symbol" data-symbol="╙">╙</button>
+      <button data-type="symbol" data-symbol="╨">╨</button>
+      <button data-type="symbol" data-symbol="╜">╜</button>
+    </div>
+    
+    <div>
+      <button data-type="symbol" data-symbol="╒">╒</button>
+      <button data-type="symbol" data-symbol="╤">╤</button>
+      <button data-type="symbol" data-symbol="╕">╕</button>
+    </div>
+    <div>
+      <button data-type="symbol" data-symbol="╞">╞</button>
+      <button data-type="symbol" data-symbol="╪">╪</button>
+      <button data-type="symbol" data-symbol="╡">╡</button>
+      <button data-type="symbol" data-symbol="═">═</button>
+      <button data-type="symbol" data-symbol="│">│</button>
+    </div>
+    <div>
+      <button data-type="symbol" data-symbol="╘">╘</button>
+      <button data-type="symbol" data-symbol="╧">╧</button>
+      <button data-type="symbol" data-symbol="╛">╛</button>
+    </div>
+    
+    <div>
+      <button data-type="symbol" data-symbol="╔">╔</button>
+      <button data-type="symbol" data-symbol="╦">╦</button>
+      <button data-type="symbol" data-symbol="╗">╗</button>
+    </div>
+    <div>
+      <button data-type="symbol" data-symbol="╠">╠</button>
+      <button data-type="symbol" data-symbol="╬">╬</button>
+      <button data-type="symbol" data-symbol="╣">╣</button>
+      <button data-type="symbol" data-symbol="═">═</button>
+      <button data-type="symbol" data-symbol="║">║</button>
+    </div>
+    <div>
+      <button data-type="symbol" data-symbol="╚">╚</button>
+      <button data-type="symbol" data-symbol="╩">╩</button>
+      <button data-type="symbol" data-symbol="╝">╝</button>
+    </div>
+    
+    <div>
+      <button data-type="symbol" data-symbol="╭">╭</button>
+      <button data-type="symbol" data-symbol="┬">┬</button>
+      <button data-type="symbol" data-symbol="╮">╮</button>
+    </div>
+    <div>
+      <button data-type="symbol" data-symbol="├">├</button>
+      <button data-type="symbol" data-symbol="┼">┼</button>
+      <button data-type="symbol" data-symbol="┤">┤</button>
+      <button data-type="symbol" data-symbol="─">─</button>
+      <button data-type="symbol" data-symbol="│">│</button>
+    </div>
+    <div>
+      <button data-type="symbol" data-symbol="╰">╰</button>
+      <button data-type="symbol" data-symbol="┴">┴</button>
+      <button data-type="symbol" data-symbol="╯">╯</button>
+    </div>
+  </div>
+  <div class="symbol toggle" data-name="japan">
+    <div>
+      <button data-type="symbol" data-symbol="あ">あ</button>
+      <button data-type="symbol" data-symbol="い">い</button>
+      <button data-type="symbol" data-symbol="う">う</button>
+      <button data-type="symbol" data-symbol="え">え</button>
+      <button data-type="symbol" data-symbol="お">お</button>
+      <button data-type="symbol" data-symbol="か">か</button>
+      <button data-type="symbol" data-symbol="き">き</button>
+      <button data-type="symbol" data-symbol="く">く</button>
+      <button data-type="symbol" data-symbol="け">け</button>
+      <button data-type="symbol" data-symbol="こ">こ</button>
+      <button data-type="symbol" data-symbol="さ">さ</button>
+      <button data-type="symbol" data-symbol="し">し</button>
+      <button data-type="symbol" data-symbol="す">す</button>
+      <button data-type="symbol" data-symbol="せ">せ</button>
+      <button data-type="symbol" data-symbol="そ">そ</button>
+      <button data-type="symbol" data-symbol="た">た</button>
+      <button data-type="symbol" data-symbol="ち">ち</button>
+      <button data-type="symbol" data-symbol="つ">つ</button>
+      <button data-type="symbol" data-symbol="て">て</button>
+      <button data-type="symbol" data-symbol="と">と</button>
+      <button data-type="symbol" data-symbol="な">な</button>
+      <button data-type="symbol" data-symbol="に">に</button>
+      <button data-type="symbol" data-symbol="ぬ">ぬ</button>
+      <button data-type="symbol" data-symbol="ね">ね</button>
+      <button data-type="symbol" data-symbol="の">の</button>
+    </div>
+      <button data-type="symbol" data-symbol="は">は</button>
+      <button data-type="symbol" data-symbol="ひ">ひ</button>
+      <button data-type="symbol" data-symbol="ふ">ふ</button>
+      <button data-type="symbol" data-symbol="へ">へ</button>
+      <button data-type="symbol" data-symbol="ほ">ほ</button>
+      <button data-type="symbol" data-symbol="ま">ま</button>
+      <button data-type="symbol" data-symbol="み">み</button>
+      <button data-type="symbol" data-symbol="む">む</button>
+      <button data-type="symbol" data-symbol="め">め</button>
+      <button data-type="symbol" data-symbol="も">も</button>
+      <button data-type="symbol" data-symbol="や">や</button>
+      <button data-type="symbol" data-symbol="ゆ">ゆ</button>
+      <button data-type="symbol" data-symbol="よ">よ</button>
+      <button data-type="symbol" data-symbol="ら">ら</button>
+      <button data-type="symbol" data-symbol="り">り</button>
+      <button data-type="symbol" data-symbol="る">る</button>
+      <button data-type="symbol" data-symbol="れ">れ</button>
+      <button data-type="symbol" data-symbol="ろ">ろ</button>
+      <button data-type="symbol" data-symbol="わ">わ</button>
+      <button data-type="symbol" data-symbol="ゐ">ゐ</button>
+      <button data-type="symbol" data-symbol="ゑ">ゑ</button>
+      <button data-type="symbol" data-symbol="を">を</button>
+      <button data-type="symbol" data-symbol="ん">ん</button>
+    <div>
+      <button data-type="symbol" data-symbol="が">が</button>
+      <button data-type="symbol" data-symbol="ぎ">ぎ</button>
+      <button data-type="symbol" data-symbol="ぐ">ぐ</button>
+      <button data-type="symbol" data-symbol="げ">げ</button>
+      <button data-type="symbol" data-symbol="ご">ご</button>
+      <button data-type="symbol" data-symbol="ざ">ざ</button>
+      <button data-type="symbol" data-symbol="じ">じ</button>
+      <button data-type="symbol" data-symbol="ず">ず</button>
+      <button data-type="symbol" data-symbol="ぜ">ぜ</button>
+      <button data-type="symbol" data-symbol="ぞ">ぞ</button>
+      <button data-type="symbol" data-symbol="だ">だ</button>
+      <button data-type="symbol" data-symbol="ぢ">ぢ</button>
+      <button data-type="symbol" data-symbol="づ">づ</button>
+      <button data-type="symbol" data-symbol="で">で</button>
+      <button data-type="symbol" data-symbol="ど">ど</button>
+      <button data-type="symbol" data-symbol="ば">ば</button>
+      <button data-type="symbol" data-symbol="び">び</button>
+      <button data-type="symbol" data-symbol="ぶ">ぶ</button>
+      <button data-type="symbol" data-symbol="べ">べ</button>
+      <button data-type="symbol" data-symbol="ぼ">ぼ</button>
+      <button data-type="symbol" data-symbol="ぱ">ぱ</button>
+      <button data-type="symbol" data-symbol="ぴ">ぴ</button>
+      <button data-type="symbol" data-symbol="ぷ">ぷ</button>
+      <button data-type="symbol" data-symbol="ぺ">ぺ</button>
+      <button data-type="symbol" data-symbol="ぽ">ぽ</button>
+    </div>
+    <div>
+      <button data-type="symbol" data-symbol="ぁ">ぁ</button>
+      <button data-type="symbol" data-symbol="ぃ">ぃ</button>
+      <button data-type="symbol" data-symbol="ぅ">ぅ</button>
+      <button data-type="symbol" data-symbol="ぇ">ぇ</button>
+      <button data-type="symbol" data-symbol="ぉ">ぉ</button>
+      <button data-type="symbol" data-symbol="ゃ">ゃ</button>
+      <button data-type="symbol" data-symbol="ゅ">ゅ</button>
+      <button data-type="symbol" data-symbol="ょ">ょ</button>
+      <button data-type="symbol" data-symbol="っ">っ</button>
+      <button data-type="symbol" data-symbol="ゎ">ゎ</button>
+      <button data-type="symbol" data-symbol="々">々</button>
+      <button data-type="symbol" data-symbol="ゝ">ゝ</button>
+      <button data-type="symbol" data-symbol="ゞ">ゞ</button>
+      <button data-type="symbol" data-symbol="ヽ">ヽ</button>
+      <button data-type="symbol" data-symbol="ヾ">ヾ</button>
+      <button data-type="symbol" data-symbol="ー">ー</button>
+    </div>
+    <div>
+      <button data-type="symbol" data-symbol="ア">ア</button>
+      <button data-type="symbol" data-symbol="イ">イ</button>
+      <button data-type="symbol" data-symbol="ウ">ウ</button>
+      <button data-type="symbol" data-symbol="エ">エ</button>
+      <button data-type="symbol" data-symbol="オ">オ</button>
+      <button data-type="symbol" data-symbol="カ">カ</button>
+      <button data-type="symbol" data-symbol="キ">キ</button>
+      <button data-type="symbol" data-symbol="ク">ク</button>
+      <button data-type="symbol" data-symbol="ケ">ケ</button>
+      <button data-type="symbol" data-symbol="コ">コ</button>
+      <button data-type="symbol" data-symbol="サ">サ</button>
+      <button data-type="symbol" data-symbol="シ">シ</button>
+      <button data-type="symbol" data-symbol="ス">ス</button>
+      <button data-type="symbol" data-symbol="セ">セ</button>
+      <button data-type="symbol" data-symbol="ソ">ソ</button>
+      <button data-type="symbol" data-symbol="タ">タ</button>
+      <button data-type="symbol" data-symbol="チ">チ</button>
+      <button data-type="symbol" data-symbol="ツ">ツ</button>
+      <button data-type="symbol" data-symbol="テ">テ</button>
+      <button data-type="symbol" data-symbol="ト">ト</button>
+      <button data-type="symbol" data-symbol="ナ">ナ</button>
+      <button data-type="symbol" data-symbol="ニ">ニ</button>
+      <button data-type="symbol" data-symbol="ヌ">ヌ</button>
+      <button data-type="symbol" data-symbol="ネ">ネ</button>
+      <button data-type="symbol" data-symbol="ノ">ノ</button>
+    </div>
+    <div>
+      <button data-type="symbol" data-symbol="ハ">ハ</button>
+      <button data-type="symbol" data-symbol="ヒ">ヒ</button>
+      <button data-type="symbol" data-symbol="フ">フ</button>
+      <button data-type="symbol" data-symbol="ヘ">ヘ</button>
+      <button data-type="symbol" data-symbol="ホ">ホ</button>
+      <button data-type="symbol" data-symbol="マ">マ</button>
+      <button data-type="symbol" data-symbol="ミ">ミ</button>
+      <button data-type="symbol" data-symbol="ム">ム</button>
+      <button data-type="symbol" data-symbol="メ">メ</button>
+      <button data-type="symbol" data-symbol="モ">モ</button>
+      <button data-type="symbol" data-symbol="ヤ">ヤ</button>
+      <button data-type="symbol" data-symbol="ユ">ユ</button>
+      <button data-type="symbol" data-symbol="ヨ">ヨ</button>
+      <button data-type="symbol" data-symbol="ラ">ラ</button>
+      <button data-type="symbol" data-symbol="リ">リ</button>
+      <button data-type="symbol" data-symbol="ル">ル</button>
+      <button data-type="symbol" data-symbol="レ">レ</button>
+      <button data-type="symbol" data-symbol="ロ">ロ</button>
+      <button data-type="symbol" data-symbol="ワ">ワ</button>
+      <button data-type="symbol" data-symbol="ヰ">ヰ</button>
+      <button data-type="symbol" data-symbol="ヱ">ヱ</button>
+      <button data-type="symbol" data-symbol="ヲ">ヲ</button>
+      <button data-type="symbol" data-symbol="ン">ン</button>
+    </div>
+    <div>
+      <button data-type="symbol" data-symbol="ガ">ガ</button>
+      <button data-type="symbol" data-symbol="ギ">ギ</button>
+      <button data-type="symbol" data-symbol="グ">グ</button>
+      <button data-type="symbol" data-symbol="ゲ">ゲ</button>
+      <button data-type="symbol" data-symbol="ゴ">ゴ</button>
+      <button data-type="symbol" data-symbol="ザ">ザ</button>
+      <button data-type="symbol" data-symbol="ジ">ジ</button>
+      <button data-type="symbol" data-symbol="ズ">ズ</button>
+      <button data-type="symbol" data-symbol="ゼ">ゼ</button>
+      <button data-type="symbol" data-symbol="ゾ">ゾ</button>
+      <button data-type="symbol" data-symbol="ダ">ダ</button>
+      <button data-type="symbol" data-symbol="ヂ">ヂ</button>
+      <button data-type="symbol" data-symbol="ヅ">ヅ</button>
+      <button data-type="symbol" data-symbol="デ">デ</button>
+      <button data-type="symbol" data-symbol="ド">ド</button>
+      <button data-type="symbol" data-symbol="バ">バ</button>
+      <button data-type="symbol" data-symbol="ビ">ビ</button>
+      <button data-type="symbol" data-symbol="ブ">ブ</button>
+      <button data-type="symbol" data-symbol="ベ">ベ</button>
+      <button data-type="symbol" data-symbol="ボ">ボ</button>
+      <button data-type="symbol" data-symbol="パ">パ</button>
+      <button data-type="symbol" data-symbol="ピ">ピ</button>
+      <button data-type="symbol" data-symbol="プ">プ</button>
+      <button data-type="symbol" data-symbol="ペ">ペ</button>
+      <button data-type="symbol" data-symbol="ポ">ポ</button>
+    </div>
+    <div>
+      <button data-type="symbol" data-symbol="ァ">ァ</button>
+      <button data-type="symbol" data-symbol="ィ">ィ</button>
+      <button data-type="symbol" data-symbol="ゥ">ゥ</button>
+      <button data-type="symbol" data-symbol="ェ">ェ</button>
+      <button data-type="symbol" data-symbol="ォ">ォ</button>
+      <button data-type="symbol" data-symbol="ャ">ャ</button>
+      <button data-type="symbol" data-symbol="ュ">ュ</button>
+      <button data-type="symbol" data-symbol="ョ">ョ</button>
+      <button data-type="symbol" data-symbol="ッ">ッ</button>
+      <button data-type="symbol" data-symbol="ヮ">ヮ</button>
+      <button data-type="symbol" data-symbol="ヵ">ヵ</button>
+      <button data-type="symbol" data-symbol="ヶ">ヶ</button>
+      <button data-type="symbol" data-symbol="々">々</button>
+      <button data-type="symbol" data-symbol="ゝ">ゝ</button>
+      <button data-type="symbol" data-symbol="ゞ">ゞ</button>
+      <button data-type="symbol" data-symbol="ヽ">ヽ</button>
+      <button data-type="symbol" data-symbol="ヾ">ヾ</button>
+      <button data-type="symbol" data-symbol="ー">ー</button>
+    </div>
+  </div>
+  <div class="symbol toggle" data-name="history"></div>
+  <div class="symbol toggle" data-name="private"></div>
+</div>
+<script src="./symbolInputTool.js"></script>
+</body>
+</html>

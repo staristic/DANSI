@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html ng-app="DANSI">
+<meta charset="UTF-8">
+<title>DANSI</title>
+<link rel="stylesheet" href="./dist/index.css"></link>
+<body>
+  <div id="tool-bar">
+    <div class="popup-icon tooltip" data-type="popup" data-target="about">
+      <img src="./assets/icons/Logo_horizontal_color.png" data-type="popup" data-target="about"/>
+      <span class="tooltiptext">關於本軟體</span>
+    </div>
+    <div class="mode-selector">
+      <label>
+        <input type="radio" data-type="inputmode" name="inputmode" data-value="overwrite" value="overwrite" checked="checked">
+        <span>覆寫模式</span>
+      </label>
+      <label>
+        <input type="radio" data-type="inputmode" name="inputmode" data-value="insert" value="insert">
+        <span>插入模式</span>
+      </label>
+    </div>
+    <div class="palette main-palette">
+      <p>前景色</p>
+      <div>
+        <button class="front-palette background-gray" data-type="color" data-color="30" data-bright="1"></button>
+        <button class="front-palette background-red" data-type="color" data-color="31" data-bright="1"></button>
+        <button class="front-palette background-lime" data-type="color" data-color="32" data-bright="1"></button>
+        <button class="front-palette background-yellow" data-type="color" data-color="33" data-bright="1"></button>
+        <button class="front-palette background-black" data-type="color" data-color="30"></button>
+        <button class="front-palette background-maroon" data-type="color" data-color="31"></button>
+        <button class="front-palette background-green" data-type="color" data-color="32"></button>
+        <button class="front-palette background-olive" data-type="color" data-color="33"></button>
+      </div>
+      <div>
+        <button class="front-palette background-blue" data-type="color" data-color="34" data-bright="1"></button>
+        <button class="front-palette background-fuchsia" data-type="color" data-color="35" data-bright="1"></button>
+        <button class="front-palette background-aqua" data-type="color" data-color="36" data-bright="1"></button>
+        <button class="front-palette background-white" data-type="color" data-color="37" data-bright="1"></button>
+        <button class="front-palette background-navy" data-type="color" data-color="34"></button>
+        <button class="front-palette background-purple" data-type="color" data-color="35"></button>
+        <button class="front-palette background-teal" data-type="color" data-color="36"></button>
+        <button class="front-palette background-silver focus" data-type="color" data-color="37"></button>
+      </div>
+      <p>背景色</p>
+      <div>
+        <button class="background-palette background-black focus" data-type="background-color" data-color="40"></button>
+        <button class="background-palette background-maroon" data-type="background-color" data-color="41"></button>
+        <button class="background-palette background-green" data-type="background-color" data-color="42"></button>
+        <button class="background-palette background-olive" data-type="background-color" data-color="43"></button>
+        <button class="background-palette background-navy" data-type="background-color" data-color="44"></button>
+        <button class="background-palette background-purple" data-type="background-color" data-color="45"></button>
+        <button class="background-palette background-teal" data-type="background-color" data-color="46"></button>
+        <button class="background-palette background-silver" data-type="background-color" data-color="47"></button>
+      </div>
+    </div>
+    <div class="popup-icon tooltip" data-type="popup" data-target="color-transfer-tool">
+      <img src="./assets/icons/palette-solid.svg" data-type="popup" data-target="color-transfer-tool" />
+      <span class="tooltiptext">色轉換工具</span>
+    </div>
+    <div class="popup-icon tooltip" data-type="popup" data-target="symbol-input-tool">
+      <img src="./assets/icons/font-solid.svg" data-type="popup" data-target="symbol-input-tool" />
+      <span class="tooltiptext">特殊符號</span>
+    </div>
+    <div class="popup-icon tooltip" data-type="displayShortcut">
+      <img src="./assets/icons/bolt-solid-grey.svg" data-type="displayShortcut" />
+      <span class="tooltiptext">設定快速輸入<br />可使用 Ctrl + 方向鍵輸入選擇項目</span>
+    </div>
+    <div class="shortcut hidden">
+      <label>
+        <input type="radio" data-type="shortcut" name="shortcut" data-value="0" value="0" checked="checked">
+        <span>填色方塊</span>
+      </label>
+      <label>
+        <input type="radio" data-type="shortcut" name="shortcut" data-value="1" value="1">
+        <span>├ ┼ ┤</span>
+      </label>
+      <label>
+        <input type="radio" data-type="shortcut" name="shortcut" data-value="2" value="2">
+        <span>╟ ╫ ╢</span>
+      </label>
+      <label>
+        <input type="radio" data-type="shortcut" name="shortcut" data-value="3" value="3">
+        <span>╞ ╪ ╡</span>
+      </label>
+      <label>
+        <input type="radio" data-type="shortcut" name="shortcut" data-value="4" value="4">
+        <span>╠ ╬ ╣</span>
+      </label>
+      <label>
+        <input type="radio" data-type="shortcut" name="shortcut" data-value="5" value="5">
+        <span>╭ ┬ ╮</span>
+      </label>
+    </div>
+  </div>
+  <div id="painting-block">
+    <div id="file-bar">
+      <div id="file-button-bar">
+        <button data-feature="save" class="file-type tooltip">
+          <img data-feature="save" src="assets/icons/save-solid.svg" />
+          <span class="tooltiptext">儲存檔案</span>
+        </button>
+        <button data-feature="open" class="file-type tooltip">
+          <img data-feature="open" src="assets/icons/folder-open-solid.svg">
+          <span class="tooltiptext">開啟舊檔</span>
+        </button>
+        <button data-feature="new-file" class="file-type last-of-type tooltip">
+          <img data-feature="new-file" src="assets/icons/file-medical-solid.svg">
+          <span class="tooltiptext">開新檔案</span>
+        </button>
+        <button data-feature="show" class="image-type tooltip">
+          <img data-feature="show" src="assets/icons/search-solid.svg">
+          <span class="tooltiptext">瀏覽全景</span>
+        </button>
+        <button data-feature="copy-all" class="image-type last-of-type tooltip">
+          <img data-feature="copy-all" src="assets/icons/clone-regular.svg">
+          <span class="tooltiptext">全部複製</span>
+        </button>
+        <button data-feature="undo" class="edit-type tooltip">
+          <img data-feature="undo" src="assets/icons/undo-solid.svg">
+          <span class="tooltiptext">上一步</span>
+        </button>
+        <button data-feature="redo" class="edit-type last-of-type tooltip">
+          <img data-feature="redo" src="assets/icons/redo-solid.svg">
+          <span class="tooltiptext">下一步</span>
+        </button>
+      </div>
+      <div id="file-tag-bar"></div>
+    </div>
+    <div id="canvas-block"></div>
+  </div>
+  <div id="image-displayer" class="hidden">
+    <div class="operation">
+      <button class="save"><img class="save" src="assets/icons/save-solid.svg"></button>
+      <button class="zoom"><img class="zoom" src="assets/icons/search-solid.svg"></button>
+      <button class="close"><img class="close" src="assets/icons/times-solid.svg"></button>
+    </div>
+    <div class="shell"></div>
+    <div class="canvas">
+      <canvas></canvas>
+    </div>
+    <a id="for-save"></a>
+  </div>
+  <script src="./dist/index.js"></script>
+</body>
+</html>

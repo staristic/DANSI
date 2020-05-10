@@ -1,0 +1,16 @@
+.mode-selector {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+
+  label {
+    margin: 0;
+    display: flex;
+    align-items: center;
+
+    input {
+      height: 20px;
+      margin: 0 5px 0 0;
+    }
+  }
+}

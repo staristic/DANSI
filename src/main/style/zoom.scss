@@ -1,0 +1,17 @@
+.zoom {
+  @import './range.scss';
+
+  width: 250px;
+  float: left;
+  font-size: 12px;
+  margin-right: 90px;
+
+  > div {
+    float: left;
+    padding: 0 5px;
+  }
+
+  p {
+    margin: 0;
+  }
+}

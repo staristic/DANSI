@@ -1,0 +1,23 @@
+@import './layer.scss';
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+
+  .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: #4da6ff;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: $tooltip-layer;
+    margin-left: 20px;
+  }
+
+  &:hover .tooltiptext {
+    visibility: visible;
+  }
+}

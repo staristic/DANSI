@@ -1,0 +1,47 @@
+@import '../../assets/style/layer.scss';
+
+$button-size: 30px;
+$bar-padding: 3px;
+
+#file-button-bar {
+  width: fit-content;
+  height: $file-bar-height;
+  float: left;
+  @import '../../assets/style/tooltip.scss';
+
+  button {
+    float: left;
+    height: $button-size;
+    width: $button-size;
+    border: none;
+    color: #fff;
+    padding: $bar-padding;
+
+    span.tooltiptext {
+      font-size: 16px;
+      width: 100px !important;
+      background-color: #4da6ff !important;
+    }
+
+    img {
+      width: $button-size - (2 * $bar-padding);
+      height: $button-size - (2 * $bar-padding);
+    }
+
+    &.last-of-type {
+      margin-right: 10px;
+    }
+
+    &.file-type {
+      background: #2d862d;
+    }
+
+    &.image-type {
+      background: #15aabf;
+    }
+
+    &.edit-type {
+      background: #f783ac;
+    }
+  }
+}

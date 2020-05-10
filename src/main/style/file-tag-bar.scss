@@ -1,0 +1,46 @@
+#file-tag-bar {
+  button {
+    float: left;
+    height: 30px;
+
+    &.file-tag {
+      margin: 0 0 0 5px;
+      display: inline-block;
+      padding: 5px 10px;
+      border: 0;
+      border-bottom: 2px solid #c6f;
+      background: #000;
+      color: #fff;
+
+      &.focus {
+        background: #406;
+
+        &.saved {
+          background: #00b300;
+        }
+      }
+
+      &:not(.focus) {
+        &.saved {
+          background: #008000;
+        }
+      }
+    }
+
+    &.close {
+      width: 30px;
+      margin: 0;
+      border-top: none;
+      border-right: 1px solid #a0f;
+      border-bottom: 2px solid #c6f;
+      border-left: none;
+      background: #000;
+      color: #3d3d5c;
+
+      &:hover {
+        background: #b30000;
+        color: #fff;
+      }
+    }
+  }
+}

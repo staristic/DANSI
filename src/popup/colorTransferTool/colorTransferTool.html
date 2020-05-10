@@ -1,0 +1,97 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>色彩轉換工具</title>
+<link rel="stylesheet" href="./colorTransferTool.css"></link>
+</head>
+<body>
+<div>
+	<label>
+		<span>轉換前前景色</span>
+		<input type="checkbox" data-timming="check" data-area="before" data-value="colorSelected">
+		<div class="palette">
+			<div>
+				<button class="front-palette background-gray" data-timming="before" data-color="30" data-bright="1"></button>
+				<button class="front-palette background-red" data-timming="before" data-color="31" data-bright="1"></button>
+				<button class="front-palette background-lime" data-timming="before" data-color="32" data-bright="1"></button>
+				<button class="front-palette background-yellow" data-timming="before" data-color="33" data-bright="1"></button>
+				<button class="front-palette background-blue" data-timming="before" data-color="34" data-bright="1"></button>
+				<button class="front-palette background-fuchsia" data-timming="before" data-color="35" data-bright="1"></button>
+				<button class="front-palette background-aqua" data-timming="before" data-color="36" data-bright="1"></button>
+				<button class="front-palette background-white" data-timming="before" data-color="37" data-bright="1"></button>
+			</div>
+			<div>
+				<button class="front-palette background-black" data-timming="before" data-color="30"></button>
+				<button class="front-palette background-maroon" data-timming="before" data-color="31"></button>
+				<button class="front-palette background-green" data-timming="before" data-color="32"></button>
+				<button class="front-palette background-olive" data-timming="before" data-color="33"></button>
+				<button class="front-palette background-navy" data-timming="before" data-color="34"></button>
+				<button class="front-palette background-purple" data-timming="before" data-color="35"></button>
+				<button class="front-palette background-teal" data-timming="before" data-color="36"></button>
+				<button class="front-palette background-silver focus" data-timming="before" data-color="37"></button>
+			</div>
+		</div>
+	</label>
+	<label>
+		<span>轉換前背景色</span>
+		<input type="checkbox" data-timming="check" data-area="before" data-value="backgroundSelected">
+		<div class="palette">
+			<div>
+				<button class="background-palette background-black focus" data-timming="before" data-color="40"></button>
+				<button class="background-palette background-maroon" data-timming="before" data-color="41"></button>
+				<button class="background-palette background-green" data-timming="before" data-color="42"></button>
+				<button class="background-palette background-olive" data-timming="before" data-color="43"></button>
+				<button class="background-palette background-navy" data-timming="before" data-color="44"></button>
+				<button class="background-palette background-purple" data-timming="before" data-color="45"></button>
+				<button class="background-palette background-teal" data-timming="before" data-color="46"></button>
+				<button class="background-palette background-silver" data-timming="before" data-color="47"></button>
+			</div>
+		</div>
+	</label>
+	<label>
+		<span>轉換後前景色</span>
+		<input type="checkbox" data-timming="check" data-area="after" data-value="colorSelected">
+		<div class="palette">
+			<div>
+				<button class="front-palette background-gray" data-timming="after" data-color="30" data-bright="1"></button>
+				<button class="front-palette background-red" data-timming="after" data-color="31" data-bright="1"></button>
+				<button class="front-palette background-lime" data-timming="after" data-color="32" data-bright="1"></button>
+				<button class="front-palette background-yellow" data-timming="after" data-color="33" data-bright="1"></button>
+				<button class="front-palette background-blue" data-timming="after" data-color="34" data-bright="1"></button>
+				<button class="front-palette background-fuchsia" data-timming="after" data-color="35" data-bright="1"></button>
+				<button class="front-palette background-aqua" data-timming="after" data-color="36" data-bright="1"></button>
+				<button class="front-palette background-white" data-timming="after" data-color="37" data-bright="1"></button>
+			</div>
+			<div>
+				<button class="front-palette background-black" data-timming="after" data-color="30"></button>
+				<button class="front-palette background-maroon" data-timming="after" data-color="31"></button>
+				<button class="front-palette background-green" data-timming="after" data-color="32"></button>
+				<button class="front-palette background-olive" data-timming="after" data-color="33"></button>
+				<button class="front-palette background-navy" data-timming="after" data-color="34"></button>
+				<button class="front-palette background-purple" data-timming="after" data-color="35"></button>
+				<button class="front-palette background-teal" data-timming="after" data-color="36"></button>
+				<button class="front-palette background-silver focus" data-timming="after" data-color="37"></button>
+			</div>
+		</div>
+	</label>
+	<label>
+		<span>轉換後背景色</span>
+		<input type="checkbox" data-timming="check" data-area="after" data-value="backgroundSelected">
+		<div class="palette">
+			<div>
+				<button class="background-palette background-black focus" data-timming="after" data-color="40"></button>
+				<button class="background-palette background-maroon" data-timming="after" data-color="41"></button>
+				<button class="background-palette background-green" data-timming="after" data-color="42"></button>
+				<button class="background-palette background-olive" data-timming="after" data-color="43"></button>
+				<button class="background-palette background-navy" data-timming="after" data-color="44"></button>
+				<button class="background-palette background-purple" data-timming="after" data-color="45"></button>
+				<button class="background-palette background-teal" data-timming="after" data-color="46"></button>
+				<button class="background-palette background-silver" data-timming="after" data-color="47"></button>
+			</div>
+		</div>
+	</label>
+	<button class="trans-button" data-timming="go">Go</button>
+</div>
+<script src="./colorTransferTool.js"></script>
+</body>
+</html>

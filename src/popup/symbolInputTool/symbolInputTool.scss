@@ -1,0 +1,100 @@
+body {
+  background: #ccc;
+
+  #class-tag {
+    display: inline-block;
+    border-top: none;
+
+    button {
+      float: left;
+      border: 1px solid #808080;
+      border-left: none;
+      background: #fff;
+      color: #80d4ff;
+      outline: none;
+
+      &:first-of-type {
+        border-left: 1px solid #808080;
+      }
+
+      &.focus {
+        border-bottom-color: #fff;
+        color: #08c;
+        font-weight: 800;
+      }
+    }
+  }
+
+  #tool-area {
+    @import '../../assets/style/tooltip.scss';
+
+    background-color: #fff;
+    border-left: 1px solid #000;
+    border-right: 1px solid #000;
+    padding: 10px;
+
+    button {
+      border: none;
+      padding: 5px;
+      border-radius: 50%;
+      outline: none;
+
+      img {
+        width: 15px;
+        height: 15px;
+      }
+
+      &.hidden {
+        display: none;
+      }
+
+      &.plus {
+        background-color: #00b300;
+      }
+
+      &.remove {
+        background-color: #ff4d4d;
+      }
+    }
+  }
+
+  #symbol-area {
+    background-color: #eee;
+    border: 1px solid #000;
+    border-top: none;
+    width: 100%;
+    box-sizing: border-box;
+
+    .symbol {
+      @import '../../assets/style/symbol-button.scss';
+
+      display: none;
+      padding: 10px;
+
+      &.focus {
+        display: block;
+      }
+
+      &.plus-mode {
+        border: 3px solid #00b300;
+      }
+
+      &.remove-mode {
+        border: 3px solid #ff4d4d;
+      }
+
+      button {
+        border: none;
+        width: 25px;
+        height: 25px;
+        font-size: 22px;
+        line-height: 22px;
+        background: transparent;
+
+        &:hover {
+          border: 1px solid #80d4ff;
+        }
+      }
+    }
+  }
+}

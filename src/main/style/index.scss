@@ -1,0 +1,11 @@
+body {
+  background: #eee;
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+
+  @import './tool-bar.scss';
+  @import './painting-block.scss';
+  @import './image-displayer.scss';
+}

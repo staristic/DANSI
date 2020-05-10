@@ -1,0 +1,19 @@
+body {
+  background: #ccc;
+
+  b {
+    cursor: pointer;
+  }
+
+  div {
+    @import '../../assets/style/symbol-button.scss';
+  }
+
+  .palette:last-child {
+    margin-bottom: 10px;
+  }
+
+  .trans-button {
+    width: 30px;
+  }
+}

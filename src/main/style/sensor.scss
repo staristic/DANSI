@@ -1,0 +1,73 @@
+@import '../../assets/style/layer.scss';
+$normal-cursor: #ff8000;
+$special-cursor: #ff1a75;
+
+.sensor {
+  width: 100%;
+  height: 100%;
+  border-right: 1px solid $normal-cursor;
+  border-bottom: 1px solid $normal-cursor;
+  display: flex;
+  position: relative;
+
+  .touch-panel {
+    position: relative;
+    opacity: 0;
+    z-index: $touch-layer;
+    flex: 1;
+  }
+
+  .pointer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: $pointer-layer;
+
+    &.insert {
+      width: 8px;
+      height: 18px;
+      border-bottom: 2px solid $normal-cursor;
+    }
+
+    &.overwrite {
+      width: 10px;
+      height: 19px;
+      border-bottom: 2px solid $normal-cursor;
+    }
+
+    &.selecting {
+      border: 2px solid $normal-cursor;
+    }
+
+    &:not(.selecting) {
+      &.double {
+        border-top: 1px solid $special-cursor;
+
+        &.right {
+          border-right: 1px solid $special-cursor;
+        }
+
+        &.left {
+          border-left: 1px solid $special-cursor;
+        }
+      }
+    }
+
+    input {
+      background: transparent;
+      caret-color: $normal-cursor;
+      pointer-events: none;
+      width: 8px;
+      height: 20px;
+      font-size: 20px;
+      border: 0;
+      outline: none;
+      padding: 0;
+      margin: 0;
+
+      &:focus {
+        z-index: $pointer-layer;
+      }
+    }
+  }
+}

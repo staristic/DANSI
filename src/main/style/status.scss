@@ -1,0 +1,13 @@
+@import '../../assets/style/layer.scss';
+
+.status-area {
+  height: $file-status-height;
+  background: #999;
+  z-index: $status-layer;
+  padding: 5px 10px;
+  box-sizing: border-box;
+
+  @import './background-image-setting.scss';
+  @import './zoom.scss';
+  @import './current-status.scss';
+}
