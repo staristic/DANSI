@@ -2,6 +2,7 @@ import './symbolInputTool.scss';
 import {ipcRenderer} from 'electron';
 import {backgroundColorName, frontColorName, colorCodeToName} from '../../assets/script/specialCode.js';
 import {ipcEvent} from '../../assets/script/ipc.js';
+import {keyboard} from '../../assets/script/keyboard.js';
 const maxHistoryLength = 100;
 const noticeType = {
   existed: 'existed',
@@ -22,13 +23,6 @@ const clickEvents = {
   remove: 'remove',
   symbol: 'symbol',
   toggle: 'toggle',
-};
-
-const onkeydown = function(e) {
-  ipcRenderer.send(ipcEvent.KEYDOWN_FROM_CHILD, {
-    keyCode: e.keyCode,
-    child: 'symbolInputTool',
-  });
 };
 
 const SymbolPanel = class SymbolPanel {
@@ -137,6 +131,18 @@ const SymbolPanel = class SymbolPanel {
     }
   }
 
+  _onkeydown(e) {
+    e.preventDefault();
+    if (e.keyCode === keyboard.space) {
+      ipcRenderer.send(ipcEvent.SYMBOL_INPUT, {word: ' '});
+    } else {
+      ipcRenderer.send(ipcEvent.KEYDOWN_FROM_CHILD, {
+        keyCode: e.keyCode,
+        child: 'symbolInputTool',
+      });
+    }
+  };
+
   _recordHistory(symbol) {
     const historyIndex = this._specialSymbol.history.indexOf(symbol);
     const historyPanel = this._getPanel(panel.history);
@@ -170,7 +176,7 @@ const SymbolPanel = class SymbolPanel {
 
   constructor() {
     this._root = document.body;
-    this._root.onkeydown = onkeydown;
+    this._root.onkeydown = this._onkeydown;
     this.isPlusMode = false;
     this.isRemoveMode = false;
     this.currentPanel = panel.special;
