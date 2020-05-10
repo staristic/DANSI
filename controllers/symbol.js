@@ -1,5 +1,6 @@
 const fs = require('fs');
-const configFilePath = './symbols_config';
+const {app} = require('electron');
+const configFilePath = app.getPath('userData') + '/symbols_config';
 const {promisify} = require('util');
 const readFileAsync = promisify(fs.readFile);
 
@@ -22,12 +23,12 @@ module.exports.saveSymbolConfig = async (symbols) => {
 };
 
 module.exports.getSymbolConfig = async () => {
+  const symbols = {
+    history: [],
+    private: [],
+  };
   try {
     const result = await readFileAsync(configFilePath);
-    const symbols = {
-      history: [],
-      private: [],
-    };
     const temp = result.toString().split('\n');
     for (const symbol of temp[0]) {
       symbols.history.push(symbol);
@@ -37,6 +38,6 @@ module.exports.getSymbolConfig = async () => {
     }
     return symbols;
   } catch (e) {
-    return null;
+    return symbols;
   }
 };
