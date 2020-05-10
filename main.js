@@ -113,7 +113,6 @@ const setGlobalColor = (event, colorInfo) => {
 };
 
 const symbolInput = (event, data) => {
-  console.log('symbol-input');
   rootWindow.webContents.send('symbol-input', data);
 };
 
