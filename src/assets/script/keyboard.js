@@ -2,6 +2,7 @@ export const keyboard = {
   backspace: 8,
   enter: 13,
   ctrl: 17,
+  space: 32,
   pageUp: 33,
   pageDown: 34,
   end: 35,
