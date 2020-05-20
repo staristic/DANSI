@@ -16,15 +16,17 @@ namespace demo {
     using v8::String;
     using v8::Value;
     using v8::Array;
+    using v8::Context;
 
     void WriteDataIntoClipBoardData(const FunctionCallbackInfo<Value>& args) {
         Isolate* isolate = args.GetIsolate();
+        v8::Local<v8::Context> context = Context::New(isolate);
         v8::Local<v8::Array> data = v8::Local<v8::Array>::Cast(args[0]);
         int i = 0;
         int l = data->Length();
         char *Str = new char[l + 1];
         for(i = 0; i < l; i++ ){
-            Str[i] = data->Get(i)->NumberValue();
+            Str[i] = data->Get(context, i).ToLocalChecked()->NumberValue(context).FromMaybe(0);
         }
 				Str[l] = '\0';
         if(OpenClipboard(NULL)){
@@ -48,13 +50,14 @@ namespace demo {
         char *buffer;
         int j, getl;
         Isolate* isolate = args.GetIsolate();
+        v8::Local<v8::Context> context = Context::New(isolate);
         Local<Array> result_list = Array::New(isolate);
         if(OpenClipboard(NULL)){
             buffer = (char*)GetClipboardData(CF_TEXT);
             getl = strlen(buffer);
             for(j = 0; j < getl; j++ ){
                 Local<Number> num = Number::New(isolate, buffer[j]);
-                result_list->Set(j, num);
+                result_list->Set(context, j, num);
             }
             CloseClipboard();
         }
