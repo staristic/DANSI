@@ -9,6 +9,8 @@ const inputTarget = {
   diffY: 'diffY',
   opacity: 'opacity',
   rotate: 'rotate',
+  width: 'width',
+  height: 'height',
 };
 
 export const BackgroundImage = class BackgroundImage {
@@ -34,25 +36,27 @@ export const BackgroundImage = class BackgroundImage {
 
   setZoomRate(rate = this._rate) {
     this._rate = rate;
-    this._backgroundImage.style.width = `${this._backgroundImage.naturalWidth * this._rate / 10}px`;
-    this._backgroundImage.style.height = `${this._backgroundImage.naturalHeight * this._rate / 10}px`;
+    this._backgroundImage.style.width = `${this.currentWidth * this._rate / 10}px`;
+    this._backgroundImage.style.height = `${this.currentHeight * this._rate / 10}px`;
   }
 
-  _handleBackgroundImageSet(e) {
-    const openBackgroundImage = (img) => {
-      const reader = new FileReader();
-      reader.onload = () => {
-        this._backgroundImage.src = reader.result;
-        this.setBackgroundImageOpacity();
-        setTimeout(() => {
-          this.setZoomRate();
-        }, 0);
-      };
-      reader.readAsDataURL(img);
+  openBackgroundImage(img) {
+    const reader = new FileReader();
+    reader.onload = () => {
+      this._backgroundImage.src = reader.result;
+      this.setBackgroundImageOpacity();
+      setTimeout(() => {
+        this.setSizeInfo();
+        this.setZoomRate();
+      }, 0);
     };
+    reader.readAsDataURL(img);
+  };
+
+  _handleBackgroundImageSet(e) {
     switch (e.target.type) {
       case inputType.file:
-        openBackgroundImage(e.target.files[0]);
+        this.openBackgroundImage(e.target.files[0]);
         break;
       case inputType.number:
         switch (e.target.dataset.feature) {
@@ -64,6 +68,12 @@ export const BackgroundImage = class BackgroundImage {
             break;
           case inputTarget.rotate:
             this.setBackgroundImageRotate(parseInt(e.target.value));
+            break;
+          case inputTarget.width:
+            this.calcNewHeight(parseInt(e.target.value));
+            break;
+          case inputTarget.height:
+            this.calcNewWidth(parseInt(e.target.value));
             break;
         }
       case inputType.range: // opacity and rotate
@@ -78,6 +88,28 @@ export const BackgroundImage = class BackgroundImage {
     }
   }
 
+  calcNewHeight(newWidth) {
+    this.setSizeInfo({
+      width: newWidth,
+      height: parseInt(newWidth * this._backgroundImage.naturalHeight / this._backgroundImage.naturalWidth),
+    });
+  }
+
+  calcNewWidth(newWidth) {
+    this.setSizeInfo({
+      width: newWidth,
+      height: parseInt(newWidth * this._backgroundImage.naturalHeight / this._backgroundImage.naturalWidth),
+    });
+  }
+
+  setSizeInfo(info) {
+    this.currentWidth = info ? info.width : this._backgroundImage.naturalWidth;
+    this.currentHeight = info ? info.height : this._backgroundImage.naturalHeight;
+    this._panel.querySelectorAll('input[data-feature=width]')[0].value = this.currentWidth;
+    this._panel.querySelectorAll('input[data-feature=height]')[0].value = this.currentHeight;
+    this.setZoomRate();
+  }
+
   constructor(panel, image) {
     this._panel = panel;
     this._backgroundImage = image;
@@ -86,6 +118,8 @@ export const BackgroundImage = class BackgroundImage {
     this._opacity = defaultOpacity;
     this._rate = 10;
     this._rotate = 0;
+    this.currentWidth = 0;
+    this.currentHeight = 0;
 
     this._panel.addEventListener('input', (e) => {
       this._handleBackgroundImageSet(e);

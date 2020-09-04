@@ -36,6 +36,12 @@ export const canvasTemplate =
         </div>
       </div>
       <div>
+        <span>寬(px)</span>
+        <input type="number" data-feature="width" value=0>
+        <span>高(px)</span>
+        <input type="number" data-feature="height" value=0>
+      </div>
+      <div>
         <div class="rotate-text">
           <span>旋轉：</span>
         </div>
