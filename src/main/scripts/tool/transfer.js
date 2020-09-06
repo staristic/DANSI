@@ -175,6 +175,44 @@ export const ansiFileToJson = (binary) => {
   return result;
 };
 
+export const stringToJson = (str) => {
+  const data = [[]];
+  let currentRow = 0;
+  for (let i = 0, l = str.length; i < l; i++) {
+    if (str[i].charCodeAt(0) === 13 && str[i + 1].charCodeAt(0) === 10) {
+      data.push([]);
+      currentRow++;
+      i++;
+    } else {
+      if (/^[\x00-\x7F]*$/.test(str[i])) {
+        data[currentRow].push({
+          word: str[i],
+          color: 37,
+          background: 40,
+          right: false,
+          bright: false,
+        });
+      } else {
+        data[currentRow].push({
+          word: str[i],
+          color: 37,
+          background: 40,
+          right: false,
+          bright: false,
+        });
+        data[currentRow].push({
+          word: str[i],
+          color: 37,
+          background: 40,
+          right: true,
+          bright: false,
+        });
+      }
+    }
+  }
+  return data;
+};
+
 export const jsonToANSI = (data) => {
   /*
     data = [[ansi px]]

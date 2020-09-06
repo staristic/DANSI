@@ -4,7 +4,7 @@ import {AnsiModel, editType} from './ansiModel.js';
 import {BackgroundImage} from './backgroundImage.js';
 import {Zoom} from './zoom.js';
 import {listenEvents, triggerEvent, EventList} from '../tool/events.js';
-import {ansiFileToJson, jsonToANSI} from '../tool/transfer.js';
+import {ansiFileToJson, jsonToANSI, stringToJson} from '../tool/transfer.js';
 import {getColor, getBackgroundColor, getBright, getShortcutMode} from '../tool/global.js';
 import {getShortcutWord, keycodeDirect} from '../tool/shortcut.js';
 import {canvasTemplate} from '../../templates/canvasTemplate.js';
@@ -110,7 +110,8 @@ export const AnsiCanvas = class AnsiCanvas {
   }
 
   getPasteData(data) {
-    this._model.edit(editType.PASTE, this._sensor.getSensorStatus(), ansiFileToJson(data));
+    const pasteInfo = typeof data === 'string' ? stringToJson(data) : ansiFileToJson(data);
+    this._model.edit(editType.PASTE, this._sensor.getSensorStatus(), pasteInfo);
   }
 
   hide() {
