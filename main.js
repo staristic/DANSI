@@ -1,4 +1,4 @@
-const {app, BrowserWindow, ipcMain, shell} = require('electron');
+const {app, BrowserWindow, ipcMain, shell, dialog} = require('electron');
 const clipboard = require('./controllers/clipboard.js');
 const file = require('./controllers/file.js');
 const {getSymbolConfig, saveSymbolConfig} = require('./controllers/symbol.js');
