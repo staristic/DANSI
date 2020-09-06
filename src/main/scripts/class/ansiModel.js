@@ -535,12 +535,13 @@ export const AnsiModel = class AnsiModel {
         newLines.push(row);
         this._newRow(row - 1);
       }
+      let rowLength = data[i].length;
       this._clearBorder(isAnscii(data[i][0].word), row, position.col);
-      this._clearBorder(isAnscii(data[i][dataLength - 1].word), row, position.col + dataLength - 1);
-      for (let j = 0, col = position.col, c = data[i].length; j < c && j < this._width; j++, col++) {
+      this._clearBorder(isAnscii(data[i][rowLength - 1].word), row, position.col + rowLength - 1);
+      for (let j = 0, col = position.col; j < rowLength && j < this._width; j++, col++) {
         this._writeData(data[i][j], row, col);
       }
-      this._view.updateOneRow(row, this._data[row], position.col - 1, position.col + dataLength + 1);
+      this._view.updateOneRow(row, this._data[row], position.col - 1, position.col + rowLength + 1);
       triggerEvent(EventList.REQUIRE_CARET_SET, {
         row: position.row,
         col: position.col,
