@@ -26,7 +26,7 @@ const electron = new webpack.ExternalsPlugin('commonjs', [
   'electron',
 ]);
 
-const devMode = process.env.NODE_ENV !== "production";
+const devMode = process.env.NODE_ENV !== 'production';
 
 module.exports = {
   mode: 'development',
@@ -47,14 +47,14 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          devMode ? "style-loader" : MiniCssExtractPlugin.loader,
+          devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
           'css-loader',
         ],
       },
       {
         test: /\.scss$/,
         use: [
-          devMode ? "style-loader" : MiniCssExtractPlugin.loader,
+          devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
           'css-loader',
           'sass-loader',
         ],

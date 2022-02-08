@@ -25,6 +25,9 @@ const createMainWindow = () => {
   let win = new BrowserWindow({
     webPreferences: {
       nodeIntegration: true,
+      // FIXME: switch to preload scripts
+      contextIsolation: false,
+      enableRemoteModule: true,
     },
     icon: `file://${__dirname}/assets/icons/DANSI.ico`,
   });
