@@ -4,7 +4,7 @@ import {unitWidth, defaultFileWidth, paintingMode} from '../../../assets/script/
 export const AnsiView = class AnsiView {
   appendNewLine(width) {
     this._parent.appendChild(this._getNewCanvas(width));
-  };
+  }
 
   insertNewLineAfterCurrentRow(row, width) {
     this._parent.insertBefore(this._getNewCanvas(width), this._parent.childNodes[row].nextSibling);
@@ -62,7 +62,7 @@ export const AnsiView = class AnsiView {
         updateRestRow(canvas, data, 0, this._viewOption);
       }
     }, 5);
-  };
+  }
 
   _getNewCanvas(width = defaultFileWidth) {
     const newLine = document.createElement('canvas');
@@ -83,5 +83,5 @@ export const AnsiView = class AnsiView {
     if (initialData) {
       this.updateAll(initialData);
     }
-  };
+  }
 };

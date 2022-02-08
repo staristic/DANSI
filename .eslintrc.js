@@ -3,7 +3,7 @@ module.exports = {
     'browser': true,
     'es6': true,
   },
-  'extends': 'google',
+  'extends': ['eslint:recommended', 'google'],
   'globals': {
     'Atomics': 'readonly',
     'SharedArrayBuffer': 'readonly',
@@ -14,6 +14,8 @@ module.exports = {
   },
   'rules': {
     "require-jsdoc" : 0,
-		'max-len': 'off'
+		'max-len': 'off',
+    "linebreak-style": 0,
+    "no-prototype-builtins": 0,
   },
 };

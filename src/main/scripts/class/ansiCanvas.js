@@ -18,7 +18,7 @@ export const AnsiCanvas = class AnsiCanvas {
 
   breakLine() {
     this._model.edit(editType.BREAKLINE, this._sensor.getSensorStatus());
-  };
+  }
 
   colorTransfer(info) {
     if (!this._sensor.isSelecting) {
@@ -71,7 +71,7 @@ export const AnsiCanvas = class AnsiCanvas {
 
   dealInput(data, direct = null) {
     this._model.edit(editType.INPUT, this._sensor.getSensorStatus(), data.word, direct);
-  };
+  }
 
   deleteSth(positionInfo = null) {
     this._model.edit(editType.DELETE, positionInfo || this._sensor.getSensorStatus());
@@ -272,7 +272,7 @@ export const AnsiCanvas = class AnsiCanvas {
       return;
     }
     if (e.shiftKey) {
-
+      // FIXME: empty block
     } else {
       this._sensor.setCursorPositionByRowCol(Math.max(this._sensor.currentRow -1, 0), this._sensor.currentCol,
           this._model.getDataByPosition(Math.max(this._sensor.currentRow -1, 0), this._sensor.currentCol));
@@ -328,5 +328,5 @@ export const AnsiCanvas = class AnsiCanvas {
     listenEvents(EventList.UNDO, this, 'undo');
     listenEvents(EventList.UP, this, 'up');
     listenEvents(EventList.ZOOM, this, 'setZoomRate');
-  };
+  }
 };

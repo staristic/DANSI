@@ -1,3 +1,4 @@
+/* eslint-env node */
 const {dialog, BrowserWindow} = require('electron');
 const fs = require('fs');
 const {promisify} = require('util');

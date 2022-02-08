@@ -51,7 +51,7 @@ export const BackgroundImage = class BackgroundImage {
       }, 0);
     };
     reader.readAsDataURL(img);
-  };
+  }
 
   _handleBackgroundImageSet(e) {
     switch (e.target.type) {
@@ -76,6 +76,8 @@ export const BackgroundImage = class BackgroundImage {
             this.calcNewWidth(parseInt(e.target.value));
             break;
         }
+        // FIXME: is fall through intended?
+        // fall through
       case inputType.range: // opacity and rotate
         switch (e.target.dataset.feature) {
           case inputTarget.opacity:
@@ -128,5 +130,5 @@ export const BackgroundImage = class BackgroundImage {
     this._panel.querySelectorAll('button[data-feature=openImg]')[0].addEventListener('click', (e) => {
       this._panel.querySelectorAll('input[accept]')[0].click();
     });
-  };
+  }
 };

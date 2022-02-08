@@ -141,7 +141,7 @@ const SymbolPanel = class SymbolPanel {
         child: 'symbolInputTool',
       });
     }
-  };
+  }
 
   _recordHistory(symbol) {
     const historyIndex = this._specialSymbol.history.indexOf(symbol);
@@ -216,7 +216,7 @@ const SymbolPanel = class SymbolPanel {
       this._specialSymbol = data;
       this._initialize();
     });
-  };
+  }
 };
 
 new SymbolPanel();

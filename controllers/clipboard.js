@@ -1,3 +1,4 @@
+/* eslint-env node */
 const platform = process.platform;
 const {clipboard} = require('electron');
 

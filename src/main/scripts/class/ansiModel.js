@@ -284,7 +284,7 @@ export const AnsiModel = class AnsiModel {
         }
       }
     }
-  };
+  }
 
   _combineTwoDiffArea(diff1 = null, diff2 = null) {
     if (diff1 === null || diff2 === null) {
@@ -522,7 +522,7 @@ export const AnsiModel = class AnsiModel {
     }
     this._view.insertNewLineAfterCurrentRow(row);
     triggerEvent(EventList.SIZE_CHANGE, null, EventFeature.onlyTriggerCurrentCanvas);
-  };
+  }
 
   _pasteData(position, data) {
     const dataLength = getDataMaxWidth(data);
@@ -535,7 +535,7 @@ export const AnsiModel = class AnsiModel {
         newLines.push(row);
         this._newRow(row - 1);
       }
-      let rowLength = data[i].length;
+      const rowLength = data[i].length;
       this._clearBorder(isAnscii(data[i][0].word), row, position.col);
       this._clearBorder(isAnscii(data[i][rowLength - 1].word), row, position.col + rowLength - 1);
       for (let j = 0, col = position.col; j < rowLength && j < this._width; j++, col++) {
@@ -588,7 +588,7 @@ export const AnsiModel = class AnsiModel {
       this._data[row][col].color = defaultPx.color;
       this._data[row][col].bright = defaultPx.bright;
     }
-  };
+  }
 
   constructor(canvas, data) {
     /*
@@ -618,5 +618,5 @@ export const AnsiModel = class AnsiModel {
     this._width = getDataMaxWidth(this._data);
     this._record = new Record(this._data);
     this._view = new AnsiView(canvas, this._data);
-  };
+  }
 };

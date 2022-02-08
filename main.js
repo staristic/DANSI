@@ -1,3 +1,4 @@
+/* eslint-env node */
 const {app, BrowserWindow, ipcMain, shell, dialog} = require('electron');
 const clipboard = require('./controllers/clipboard.js');
 const file = require('./controllers/file.js');
@@ -21,7 +22,7 @@ const copyANSI = (event, data) => {
 };
 
 const createMainWindow = () => {
-  win = new BrowserWindow({
+  let win = new BrowserWindow({
     webPreferences: {
       nodeIntegration: true,
     },

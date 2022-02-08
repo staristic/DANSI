@@ -115,7 +115,7 @@ class Root {
       default:
         return;
     }
-  };
+  }
 
   _openFile() {
     ipcRenderer.send(ipcEvent.OPEN_FILE);
@@ -200,6 +200,6 @@ class Root {
       this._onkeydown(data);
     });
   }
-};
+}
 
 new Root();

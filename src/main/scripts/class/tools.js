@@ -75,5 +75,5 @@ export const Tools = class Tools {
       }
     });
     listenEvents(EventList.INSERT, this, 'toggleInputMode');
-  };
+  }
 };

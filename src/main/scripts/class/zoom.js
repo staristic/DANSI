@@ -15,5 +15,5 @@ export const Zoom = class Zoom {
     this._panel.addEventListener('input', (e) => {
       this._setZoomRate(e.target.value);
     });
-  };
+  }
 };

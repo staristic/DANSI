@@ -76,7 +76,7 @@ class ColorTransferTool {
           return;
       }
     });
-  };
-};
+  }
+}
 
 new ColorTransferTool();

@@ -1,6 +1,7 @@
+/* eslint-env node */
 const path = require('path');
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const about = new HtmlWebpackPlugin({
@@ -19,13 +20,6 @@ const symbolInputTool = new HtmlWebpackPlugin({
   inject: false,
   filename: 'popup/symbolInputTool.html',
   template: './src/popup/symbolInputTool/symbolInputTool.html',
-});
-
-const extractPlugin = new ExtractTextPlugin({
-  filename: (getPath) => {
-    const fileName = getPath('[name].css');
-    return fileName === 'index.css' ? 'index.css': `popup/${fileName}`;
-  },
 });
 
 const electron = new webpack.ExternalsPlugin('commonjs', [
@@ -51,23 +45,25 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
+          MiniCssExtractPlugin.loader,
           'style-loader',
           'css-loader',
         ],
       },
       {
         test: /\.scss$/,
-        use: extractPlugin.extract({
-          use: [
-            'css-loader',
-            'sass-loader',
-          ],
-        }),
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'sass-loader',
+        ],
       },
     ],
   },
   plugins: [
-    extractPlugin,
+    new MiniCssExtractPlugin({
+      filename: (pathData) => pathData.chunk.name === 'index' ? '[name].css' : 'popup/[name].js',
+    }),
     electron,
     about,
     colorTransferTool,

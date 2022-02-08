@@ -42,16 +42,16 @@ export const Sensor = class Sensor {
     this.currentCol = Math.floor(x / this._widthRate());
     this._setPointerPosition(currentPositionDataInfo);
     this._updateStatusPanel();
-  };
+  }
 
   setCursorPositionByRowCol(row = this.currentRow, col = this.currentCol, currentPositionDataInfo) {
     this.currentRow = row === null ? this.currentRow : row;
-    this.currentCol = col === null ? this.currentCol : col; ;
+    this.currentCol = col === null ? this.currentCol : col;
     this._setPointerPosition(currentPositionDataInfo);
     this._updateStatusPanel();
     this._resetSelect();
     this.focusInput();
-  };
+  }
 
   setSize(row = 1, col = 80) {
     this._root.style.height = `${row * this._rate * 2}px`;
@@ -94,7 +94,7 @@ export const Sensor = class Sensor {
     this.isSelecting = false;
     this._pointer.classList.remove(classOfSelecting);
     this._resetPointerSize();
-  };
+  }
 
   _setPointerPosition(currentPositionDataInfo) {
     this._pointer.style.top = `${this.currentRow * this._rate * 2}px`;
@@ -245,5 +245,5 @@ export const Sensor = class Sensor {
         }
       }, 0);
     });
-  };
+  }
 };

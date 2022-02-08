@@ -45,5 +45,5 @@ export const Palette = class Palette {
           return;
       }
     });
-  };
+  }
 };
