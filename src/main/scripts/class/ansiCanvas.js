@@ -70,6 +70,7 @@ export const AnsiCanvas = class AnsiCanvas {
   }
 
   dealInput(data, direct = null) {
+    if (!data) throw new Error('no data')
     this._model.edit(editType.INPUT, this._sensor.getSensorStatus(), data.word, direct);
   }
 
@@ -237,7 +238,7 @@ export const AnsiCanvas = class AnsiCanvas {
       colDiff: mode === 0 ? 0 : (keyInfo.keyCode === keyboard.left ? -2 : (keyInfo.keyCode === keyboard.right ? 2 : 0)),
     };
     const word = getShortcutWord(mode, neibor, keycodeDirect[keyInfo.keyCode]);
-    if (word === null) {
+    if (word == null) {
       return;
     } else {
       this.dealInput({word: word}, direct);
