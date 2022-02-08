@@ -45,7 +45,7 @@ export const AnsiCanvas = class AnsiCanvas {
     this._model.edit(editType.COLOR, this._sensor.getSensorStatus(), dataColor);
   }
 
-  copy(sensorStatus) {
+  copy(sensorStatus = this._sensor.getSensorStatus()) {
     const selectedData = [];
     const range = sensorStatus.range || null;
     if (!range) {
@@ -70,7 +70,7 @@ export const AnsiCanvas = class AnsiCanvas {
   }
 
   dealInput(data, direct = null) {
-    if (!data) throw new Error('no data')
+    if (!data?.word) return;
     this._model.edit(editType.INPUT, this._sensor.getSensorStatus(), data.word, direct);
   }
 
