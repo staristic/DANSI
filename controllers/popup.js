@@ -8,15 +8,22 @@ const popupName = {
 
 module.exports.popupName = popupName;
 
+const DEFAULT_WIN_OPTIONS = {
+  webPreferences: {
+    nodeIntegration: true,
+    // FIXME: switch to preload scripts
+    contextIsolation: false,
+    enableRemoteModule: true,
+  },
+};
+module.exports.DEFAULT_WIN_OPTIONS = DEFAULT_WIN_OPTIONS;
+
 const openPopupStatus = {
   about: {
     windowOptions: {
       transparent: true,
       width: 400,
       height: 200,
-      webPreferences: {
-        nodeIntegration: true,
-      },
     },
     menu: null,
     isOpening: false,
@@ -26,9 +33,6 @@ const openPopupStatus = {
       transparent: true,
       width: 230,
       height: 360,
-      webPreferences: {
-        nodeIntegration: true,
-      },
     },
     isHalfOpacity: true,
     menu: null,
@@ -39,9 +43,6 @@ const openPopupStatus = {
       transparent: true,
       width: 700,
       height: 250,
-      webPreferences: {
-        nodeIntegration: true,
-      },
     },
     isHalfOpacity: true,
     menu: null,
@@ -55,7 +56,10 @@ module.exports.openPopup = (rootWindow, name) => {
   }
   openPopupStatus[name].isOpening = true;
   openPopupStatus[name].windowOptions.parent = rootWindow;
-  const popup = new BrowserWindow(openPopupStatus[name].windowOptions);
+  const popup = new BrowserWindow({
+    ...DEFAULT_WIN_OPTIONS,
+    ...openPopupStatus[name].windowOptions,
+  });
   if (openPopupStatus[name].isHalfOpacity) {
     popup.on('focus', () => {
       popup.setOpacity(1);
@@ -74,6 +78,9 @@ module.exports.openPopup = (rootWindow, name) => {
   popup.loadURL(`file://${__dirname}/../dist/popup/${name}.html`);
   popup.show();
   openPopupStatus[name].win = popup;
+  if (process.argv.includes('dev')) {
+    popup.webContents.openDevTools();
+  }
 };
 
 module.exports.sendEventToPopup = (targetWindows, eventName, data) => {
