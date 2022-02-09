@@ -1,8 +1,9 @@
 import {triggerEvent, EventList, EventFeature} from '../tool/events.js';
 import {unitWidth} from '../../../assets/script/specialCode.js';
 import {getInputMode} from '../tool/global.js';
-import {remote} from 'electron';
-const {Menu, MenuItem} = remote;
+// FIXME: move manu logic into background
+// import {remote} from 'electron';
+// const {Menu, MenuItem} = remote;
 const classOfSelecting = 'selecting';
 const cursorClass = {
   double: 'double',
@@ -42,16 +43,16 @@ export const Sensor = class Sensor {
     this.currentCol = Math.floor(x / this._widthRate());
     this._setPointerPosition(currentPositionDataInfo);
     this._updateStatusPanel();
-  };
+  }
 
   setCursorPositionByRowCol(row = this.currentRow, col = this.currentCol, currentPositionDataInfo) {
     this.currentRow = row === null ? this.currentRow : row;
-    this.currentCol = col === null ? this.currentCol : col; ;
+    this.currentCol = col === null ? this.currentCol : col;
     this._setPointerPosition(currentPositionDataInfo);
     this._updateStatusPanel();
     this._resetSelect();
     this.focusInput();
-  };
+  }
 
   setSize(row = 1, col = 80) {
     this._root.style.height = `${row * this._rate * 2}px`;
@@ -94,7 +95,7 @@ export const Sensor = class Sensor {
     this.isSelecting = false;
     this._pointer.classList.remove(classOfSelecting);
     this._resetPointerSize();
-  };
+  }
 
   _setPointerPosition(currentPositionDataInfo) {
     this._pointer.style.top = `${this.currentRow * this._rate * 2}px`;
@@ -156,25 +157,25 @@ export const Sensor = class Sensor {
     this.isSelecting = false;
     this.setSize(initialData.length, initialData[0].length);
 
-    const sensorMenu = new Menu();
-    sensorMenu.append(new MenuItem({
-      label: '複製',
-      click: () => {
-        triggerEvent(EventList.COPY, this.getSensorStatus(), EventFeature.onlyTriggerCurrentCanvas);
-      },
-    }));
-    sensorMenu.append(new MenuItem({
-      label: '剪下',
-      click: () => {
-        triggerEvent(EventList.CUT, this.getSensorStatus(), EventFeature.onlyTriggerCurrentCanvas);
-      },
-    }));
-    sensorMenu.append(new MenuItem({
-      label: '貼上',
-      click: () => {
-        triggerEvent(EventList.PASTE, this.getSensorStatus(), EventFeature.onlyTriggerCurrentCanvas);
-      },
-    }));
+    // const sensorMenu = new Menu();
+    // sensorMenu.append(new MenuItem({
+    // label: '複製',
+    // click: () => {
+    // triggerEvent(EventList.COPY, this.getSensorStatus(), EventFeature.onlyTriggerCurrentCanvas);
+    // },
+    // }));
+    // sensorMenu.append(new MenuItem({
+    // label: '剪下',
+    // click: () => {
+    // triggerEvent(EventList.CUT, this.getSensorStatus(), EventFeature.onlyTriggerCurrentCanvas);
+    // },
+    // }));
+    // sensorMenu.append(new MenuItem({
+    // label: '貼上',
+    // click: () => {
+    // triggerEvent(EventList.PASTE, this.getSensorStatus(), EventFeature.onlyTriggerCurrentCanvas);
+    // },
+    // }));
 
     this._sensor.addEventListener('mousedown', (e) => {
       this._isMouseDown = true;
@@ -222,7 +223,7 @@ export const Sensor = class Sensor {
 
     this._sensor.addEventListener('contextmenu', (e) => {
       e.preventDefault();
-      sensorMenu.popup({window: remote.getCurrentWindow()});
+      // sensorMenu.popup({window: remote.getCurrentWindow()});
     });
 
     /* compositionstart,  compositionend for detecting chinese input */
@@ -245,5 +246,5 @@ export const Sensor = class Sensor {
         }
       }, 0);
     });
-  };
+  }
 };

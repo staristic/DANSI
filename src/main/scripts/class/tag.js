@@ -45,19 +45,6 @@ export const Tag = class Tag {
       }
     }
   }
-  newTag(hash, fileName) {
-    this._fileTagBar.innerHTML = this._fileTagBar.innerHTML + tagTemplate(hash, fileName);
-    this.setTagFocus(hash);
-    this.fileSaved(hash); // new file is saved
-  }
-
-  removeTag(hash) {
-    for (const fileTag of this._fileTagBar.querySelectorAll('[data-hash]')) {
-      if (fileTag.dataset.hash === hash) {
-        fileTag.parentNode.removeChild(fileTag);
-      }
-    }
-  }
 
   setTagFocus(hash) {
     for (const fileTag of this._fileTagBar.getElementsByClassName(classOfFileTag)) {
@@ -108,5 +95,5 @@ export const Tag = class Tag {
 
     listenEvents(EventList.FILE_SAVED, this, 'fileSaved');
     listenEvents(EventList.FILE_UNSAVED, this, 'fileUnSaved');
-  };
+  }
 };

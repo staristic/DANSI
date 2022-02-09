@@ -1,3 +1,4 @@
+/* eslint-env node */
 const {BrowserWindow} = require('electron');
 const popupName = {
   colorTransferTool: 'colorTransferTool',

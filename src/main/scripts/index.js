@@ -4,7 +4,7 @@ import {AnsiCanvas} from './class/AnsiCanvas.js';
 import {ImageDisplayer} from './class/imageDisplayer.js';
 import {Tag} from './class/tag.js';
 import {Tools} from './class/tools.js';
-import {triggerEvent, listenEvents, EventList, EventFeature} from './tool/events.js';
+import {triggerEvent, listenEvents, EventList, EventFeature, processKeyEvent} from './tool/events.js';
 import {getHashCode, getFileNameFromFilePath, getFileNameWithoutTypeFromFilePath} from './tool/util.js';
 import {getCurrentHash, setCurrentHash} from './tool/global.js';
 import {jsonToANSI} from './tool/transfer.js';
@@ -71,6 +71,7 @@ class Root {
   }
 
   _onkeydown(e) {
+    if (processKeyEvent(e)) return;
     if (e.ctrlKey && e.keyCode != keyboard.ctrl) {
       triggerEvent(EventList.SHORTCUT_INPUT, e, EventFeature.onlyTriggerCurrentCanvas);
       return;
@@ -115,7 +116,7 @@ class Root {
       default:
         return;
     }
-  };
+  }
 
   _openFile() {
     ipcRenderer.send(ipcEvent.OPEN_FILE);
@@ -200,6 +201,6 @@ class Root {
       this._onkeydown(data);
     });
   }
-};
+}
 
 new Root();

@@ -1,3 +1,4 @@
+/* eslint-env node */
 const {dialog, BrowserWindow} = require('electron');
 const fs = require('fs');
 const {promisify} = require('util');
@@ -27,13 +28,15 @@ module.exports.saveData = async (data) => {
 module.exports.readFile = async () => {
   try {
     const win = BrowserWindow.getFocusedWindow();
-    const filePath = await dialog.showOpenDialog(win, fileOptionsSetting);
-    const result = await readFileAsync(filePath[0]);
+    const {canceled, filePaths} = await dialog.showOpenDialog(win, fileOptionsSetting);
+    if (canceled) return;
+    const result = await readFileAsync(filePaths[0]);
     return {
-      path: filePath[0],
+      path: filePaths[0],
       data: result,
     };
   } catch (e) {
+    console.error(e);
     return null;
   }
 };

@@ -64,5 +64,5 @@ export const ImageDisplayer = class ImageDisplayer {
           return;
       }
     });
-  };
+  }
 };

@@ -1,3 +1,4 @@
+/* eslint-env node */
 const {app, BrowserWindow, ipcMain, shell, dialog} = require('electron');
 const clipboard = require('./controllers/clipboard.js');
 const file = require('./controllers/file.js');
@@ -21,9 +22,12 @@ const copyANSI = (event, data) => {
 };
 
 const createMainWindow = () => {
-  win = new BrowserWindow({
+  let win = new BrowserWindow({
     webPreferences: {
       nodeIntegration: true,
+      // FIXME: switch to preload scripts
+      contextIsolation: false,
+      enableRemoteModule: true,
     },
     icon: `file://${__dirname}/assets/icons/DANSI.ico`,
   });
@@ -56,7 +60,8 @@ const openFile = async (event) => {
       throw new Error('無法取得檔案資訊');
     }
   } catch (e) {
-    dialog.showErrorBox('開檔失敗', e);
+    console.error(e);
+    dialog.showErrorBox('開檔失敗', e?.message || String(e));
   }
 };
 

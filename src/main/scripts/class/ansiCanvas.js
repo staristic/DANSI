@@ -18,7 +18,7 @@ export const AnsiCanvas = class AnsiCanvas {
 
   breakLine() {
     this._model.edit(editType.BREAKLINE, this._sensor.getSensorStatus());
-  };
+  }
 
   colorTransfer(info) {
     if (!this._sensor.isSelecting) {
@@ -45,7 +45,7 @@ export const AnsiCanvas = class AnsiCanvas {
     this._model.edit(editType.COLOR, this._sensor.getSensorStatus(), dataColor);
   }
 
-  copy(sensorStatus) {
+  copy(sensorStatus = this._sensor.getSensorStatus()) {
     const selectedData = [];
     const range = sensorStatus.range || null;
     if (!range) {
@@ -70,8 +70,9 @@ export const AnsiCanvas = class AnsiCanvas {
   }
 
   dealInput(data, direct = null) {
+    if (!data?.word) return;
     this._model.edit(editType.INPUT, this._sensor.getSensorStatus(), data.word, direct);
-  };
+  }
 
   deleteSth(positionInfo = null) {
     this._model.edit(editType.DELETE, positionInfo || this._sensor.getSensorStatus());
@@ -237,7 +238,7 @@ export const AnsiCanvas = class AnsiCanvas {
       colDiff: mode === 0 ? 0 : (keyInfo.keyCode === keyboard.left ? -2 : (keyInfo.keyCode === keyboard.right ? 2 : 0)),
     };
     const word = getShortcutWord(mode, neibor, keycodeDirect[keyInfo.keyCode]);
-    if (word === null) {
+    if (word == null) {
       return;
     } else {
       this.dealInput({word: word}, direct);
@@ -272,7 +273,7 @@ export const AnsiCanvas = class AnsiCanvas {
       return;
     }
     if (e.shiftKey) {
-
+      // FIXME: empty block
     } else {
       this._sensor.setCursorPositionByRowCol(Math.max(this._sensor.currentRow -1, 0), this._sensor.currentCol,
           this._model.getDataByPosition(Math.max(this._sensor.currentRow -1, 0), this._sensor.currentCol));
@@ -328,5 +329,5 @@ export const AnsiCanvas = class AnsiCanvas {
     listenEvents(EventList.UNDO, this, 'undo');
     listenEvents(EventList.UP, this, 'up');
     listenEvents(EventList.ZOOM, this, 'setZoomRate');
-  };
+  }
 };

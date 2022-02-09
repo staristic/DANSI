@@ -1,3 +1,4 @@
+/* eslint-env node */
 const platform = process.platform;
 const {clipboard} = require('electron');
 
@@ -28,13 +29,8 @@ if (platform === 'win32') {
   };
 
   module.exports.getClipBoardData = async () => {
-    const temp = addon.getClipBoardData();
-    if (checkIfContainANSICode(temp)) {
-      return temp;
-    } else {
-      const text = clipboard.readText();
-      return text;
-    }
+    // NOTE: we have to pass the raw bytes so DANSI can decode big5uao
+    return addon.getClipBoardData();
   };
 } else if (platform === 'darwin') {
   // TODO: resolve clipboard access problem on macOS

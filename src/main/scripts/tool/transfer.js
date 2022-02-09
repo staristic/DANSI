@@ -1,3 +1,4 @@
+/* eslint-env node */
 import {BIG5} from '../../../assets/script/BIG5CodeToChar.js';
 import {CHAR} from '../../../assets/script/charToBIG5Code.js';
 import {specialCode, transCode, availableColor, availableBackground, availableBright, availableInit, availableColorCode, defaultColorInfo} from '../../../assets/script/specialCode.js';
@@ -184,7 +185,7 @@ export const stringToJson = (str) => {
       currentRow++;
       i++;
     } else {
-      if (/^[\x00-\x7F]*$/.test(str[i])) {
+      if (/^[\x00-\x7F]*$/.test(str[i])) { // eslint-disable-line no-control-regex
         data[currentRow].push({
           word: str[i],
           color: 37,

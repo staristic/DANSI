@@ -10,6 +10,7 @@ button {
   font-size: 18px;
   font-family: PMingLiU, sans-serif;
   line-height: 18px;
+  vertical-align: middle;
 
   &.focus {
     &::after {

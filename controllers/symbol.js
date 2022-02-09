@@ -1,3 +1,4 @@
+/* eslint-env node */
 const fs = require('fs');
 const {app} = require('electron');
 const configFilePath = app.getPath('userData') + '/symbols_config';

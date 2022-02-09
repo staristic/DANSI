@@ -103,5 +103,5 @@ export const Record = class Record {
       diffInfo: null,
     }];
     this._currentPosition = 0;
-  };
+  }
 };
