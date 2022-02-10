@@ -3,7 +3,7 @@ const {app, BrowserWindow, ipcMain, shell, dialog} = require('electron');
 const clipboard = require('./controllers/clipboard.js');
 const file = require('./controllers/file.js');
 const {getSymbolConfig, saveSymbolConfig} = require('./controllers/symbol.js');
-const {popupName, openPopup, sendEventToPopup} = require('./controllers/popup.js');
+const {popupName, openPopup, sendEventToPopup, DEFAULT_WIN_OPTIONS} = require('./controllers/popup.js');
 
 let rootWindow;
 
@@ -23,13 +23,8 @@ const copyANSI = (event, data) => {
 
 const createMainWindow = () => {
   let win = new BrowserWindow({
-    webPreferences: {
-      nodeIntegration: true,
-      // FIXME: switch to preload scripts
-      contextIsolation: false,
-      enableRemoteModule: true,
-    },
     icon: `file://${__dirname}/assets/icons/DANSI.ico`,
+    ...DEFAULT_WIN_OPTIONS,
   });
   win.setMenu(null);
   win.loadURL(`file://${__dirname}/index.html`);
