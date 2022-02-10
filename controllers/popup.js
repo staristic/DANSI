@@ -42,7 +42,7 @@ const openPopupStatus = {
     windowOptions: {
       transparent: true,
       width: 700,
-      height: 250,
+      height: 350,
     },
     isHalfOpacity: true,
     menu: null,
