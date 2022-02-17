@@ -47,16 +47,14 @@ const createMainWindow = () => {
 
 const openFile = async (event) => {
   try {
-    const fileInfo = await file.readFile();
+    const result = await file.readFile();
     // TODO: only open one file now. will support multiple files.
-    if (fileInfo) {
-      event.sender.send('get-open-file', fileInfo);
-    } else {
-      throw new Error('無法取得檔案資訊');
+    if (!result.canceled) {
+      event.sender.send('get-open-file', result);
     }
   } catch (e) {
     console.error(e);
-    dialog.showErrorBox('開檔失敗', e?.message || String(e));
+    dialog.showErrorBox('開檔失敗', '無法取得檔案資訊');
   }
 };
 
@@ -90,17 +88,16 @@ const requireSymbolData = async () => {
 
 const saveFile = async (event, data) => {
   try {
-    const savedFilePath = await file.saveData(data);
-    if (savedFilePath) {
+    const {canceled, filePath} = await file.saveData(data);
+    if (!canceled) {
       event.sender.send('save-success', {
         hash: data.hash,
-        filePath: savedFilePath,
+        filePath,
       });
-    } else {
-      throw new Error('無法取得檔案路徑');
     }
   } catch (e) {
-    dialog.showErrorBox('存檔失敗', e);
+    console.error(e);
+    dialog.showErrorBox('存檔失敗', '無法取得檔案路徑');
   }
 };
 
